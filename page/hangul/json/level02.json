@@ -12,6 +12,8 @@
         {
             "chapterTitle" : "Chapter 1. 가 - 히",
             "itemsPerRow": 10,
+            "itemsPerRowMobile": 5,
+            "MobileEmpty": false,
             "words": [
                 {"category": "가", "audio": "/page/hangul/audio/level01/가.mp3"},
                 {"category": "갸", "audio": "/page/hangul/audio/level01/나.mp3"},
@@ -40,7 +42,9 @@
         },
         {
             "chapterTitle" : "Chapter 2. 가 - 히",
-            "itemsPerRow": 6,
+            "itemsPerRow": 10,
+            "itemsPerRowMobile": 5,
+            "MobileEmpty": false,
             "words": [
                 {"category": "가", "audio": "/page/hangul/audio/level01/가.mp3"},
                 {"category": "나", "audio": "/page/hangul/audio/level01/나.mp3"},
