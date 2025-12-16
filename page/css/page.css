@@ -23,7 +23,7 @@
     margin: 0;
 
 
-    background-image: url('/AlirangKoreanClass/img/background/Background02.png');
+    background-image: url('/img/background/Background02.png');
     background-position: center; /* 이미지를 중앙에 배치 */
     background-repeat: no-repeat;
     background-size: cover;
@@ -257,11 +257,11 @@
 }
 
 .page .subMenu ul li .book::before {
-    background-image: url('/AlirangKoreanClass/page/img/book.jpg');
+    background-image: url('/page/img/book.jpg');
 }
 
 .page .subMenu ul li .pronunciation::before {
-    background-image: url('/AlirangKoreanClass/page/img/pronunciation.jpg');
+    background-image: url('/page/img/pronunciation.jpg');
 }
 
 @media (hover: hover) {
@@ -289,7 +289,7 @@
     display: block;
     position: relative;
     
-    background-image: url('/AlirangKoreanClass/img/background/Background08.png');
+    background-image: url('/img/background/Background08.png');
     background-position: center; /* 이미지를 중앙에 배치 */
     background-repeat: no-repeat;
     background-size: cover;
@@ -320,7 +320,7 @@
 
     /* z-index: -999;
     
-    background-image: url('/AlirangKoreanClass/img/background/Background06.png');
+    background-image: url('/img/background/Background06.png');
     background-position: center; 
     background-repeat: no-repeat;
     background-size: cover; */

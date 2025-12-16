@@ -95,7 +95,7 @@ img, a, button, input {
 
     z-index: -999;
     
-    background-image: url('/AlirangKoreanClass/img/background/Background01.png');
+    background-image: url('/img/background/Background01.png');
     background-position: center; /* 이미지를 중앙에 배치 */
     background-repeat: no-repeat;
     background-size: cover;
@@ -199,7 +199,7 @@ img, a, button, input {
 
     z-index: -999;
     
-    background-image: url('/AlirangKoreanClass/img/background/Background04.png');
+    background-image: url('/img/background/Background04.png');
     background-position: center; /* 이미지를 중앙에 배치 */
     background-repeat: no-repeat;
     background-size: cover;
@@ -237,7 +237,7 @@ img, a, button, input {
 
     z-index: -999;
     
-    background-image: url('/AlirangKoreanClass/img/background/Background07.png');
+    background-image: url('/img/background/Background07.png');
     background-position: center; /* 이미지를 중앙에 배치 */
     background-repeat: no-repeat;
     background-size: cover;

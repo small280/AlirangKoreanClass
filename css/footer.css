@@ -11,7 +11,7 @@ footer {
 .footer-img {
     width: 100%;
     height: 1000px;
-    background-image: url('/AlirangKoreanClass/img/background/Background06.png');
+    background-image: url('/img/background/Background06.png');
     background-position: center; /* 이미지를 중앙에 배치 */
     background-repeat: no-repeat;
     background-size: cover;

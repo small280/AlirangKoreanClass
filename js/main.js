@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    fetch('/AlirangKoreanClass/contents.html') //MainContents 불러오기
+    fetch('/contents.html') //MainContents 불러오기
         .then(response => {
             // 응답을 텍스트 형태로 변환합니다.
             if (!response.ok) {

@@ -1,4 +1,4 @@
-fetch('/AlirangKoreanClass/header.html') // Header 불러오기
+fetch('/header.html') // Header 불러오기
     .then(response => {
         // 응답을 텍스트 형태로 변환합니다.
         if (!response.ok) {
@@ -16,7 +16,7 @@ fetch('/AlirangKoreanClass/header.html') // Header 불러오기
         document.getElementById('header-area').innerHTML = '<p>콘텐츠를 불러오지 못했습니다.</p>';
     });
 
-fetch('/AlirangKoreanClass/sidebar.html') // Sidebar 불러오기
+fetch('/sidebar.html') // Sidebar 불러오기
     .then(response => {
         // 응답을 텍스트 형태로 변환합니다.
         if (!response.ok) {
@@ -34,7 +34,7 @@ fetch('/AlirangKoreanClass/sidebar.html') // Sidebar 불러오기
         document.getElementById('sidebar-area').innerHTML = '<p>콘텐츠를 불러오지 못했습니다.</p>';
     });
 
-fetch('/AlirangKoreanClass/footer.html') // Footer 불러오기
+fetch('/footer.html') // Footer 불러오기
     .then(response => {
         // 응답을 텍스트 형태로 변환합니다.
         if (!response.ok) {

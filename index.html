@@ -4,27 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/AlirangKoreanClass/css/header.css">
-    <link rel="stylesheet" href="/AlirangKoreanClass/css/main.css">
-    <link rel="stylesheet" href="/AlirangKoreanClass/css/sidebar.css">
-    <link rel="stylesheet" href="/AlirangKoreanClass/page/css/page.css">
-    <link rel="stylesheet" href="/AlirangKoreanClass/css/footer.css">
-    <link rel="stylesheet" href="/AlirangKoreanClass/css/font.css">
+    <script>
+        // 현재 호스트 이름을 기반으로 베이스 경로를 결정합니다.
+        const baseHref = window.location.hostname.includes('github.io') 
+            ? '/AlirangKoreanClass/' 
+            : '/'; // 로컬 환경일 경우 '/'
+        
+        // base 태그를 동적으로 생성하여 설정합니다.
+        const baseTag = document.createElement('base');
+        baseTag.href = baseHref;
+        document.head.appendChild(baseTag);
+    </script>
+    
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/page/css/page.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/font.css">
 
-    <link rel="stylesheet" href="/AlirangKoreanClass/css/mobile/mobile.css">
+    <link rel="stylesheet" href="/css/mobile/mobile.css">
 
-    <link rel="icon" href="/AlirangKoreanClass/img/logo/logo.png" type="image/png">
+    <link rel="icon" href="/img/logo/logo.png" type="image/png">
     <title>알이랑 코리안 클래스</title>
 
 </head>
 <body ondragstart="return false;">
     
     <div id="header-area"> <!-------------------- Header 불러오기 -------------------->
-        <!-- <img class="loading_img" src="/AlirangKoreanClass/img/icon/loading.png" alt="Loading..."> -->
+        <!-- <img class="loading_img" src="/img/icon/loading.png" alt="Loading..."> -->
     </div>
     
     <div id="sidebar-area"> <!-------------------- Header 불러오기 -------------------->
-        <!-- <img class="loading_img" src="/AlirangKoreanClass/img/icon/loading.png" alt="Loading..."> -->
+        <!-- <img class="loading_img" src="/img/icon/loading.png" alt="Loading..."> -->
     </div>
     
     
@@ -40,8 +52,8 @@
     </div>
     
     <!-- 자바스크립트 불러오기 -->
-    <script defer src="/AlirangKoreanClass/js/main.js"></script>
-    <script defer src="/AlirangKoreanClass/js/layout.js"></script>
-    <script defer src="/AlirangKoreanClass/page/js/page.js"></script>
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/layout.js"></script>
+    <script defer src="/page/js/page.js"></script>
 </body>
 </html>

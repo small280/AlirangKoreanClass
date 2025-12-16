@@ -55,7 +55,7 @@ async function fetchAndDisplayData(filename, type) {
         
         if (dataArea) {
             if (type === 'subMenu') { // -------------------------- 서브메뉴 불러오기 ----------------------------------------------------
-                fetch('/AlirangKoreanClass/page/subMenu.html')
+                fetch('/page/subMenu.html')
                 .then(response => {
                     // 응답을 텍스트 형태로 변환합니다.
                     if (!response.ok) {
@@ -75,7 +75,7 @@ async function fetchAndDisplayData(filename, type) {
             }
             
             else if (type === 'book') { // -------------------------- 한글교재 불러오기 ----------------------------------------------------
-                fetch('/AlirangKoreanClass/page/book.html')
+                fetch('/page/book.html')
 
                 .then(response => {
                     // 응답을 텍스트 형태로 변환합니다.
@@ -110,7 +110,7 @@ async function fetchAndDisplayData(filename, type) {
             }
             
             else if (type === 'pronunciation') { // -------------------------- 발음듣기 불러오기 ----------------------------------------------------
-                fetch('/AlirangKoreanClass/page/pronunciation.html')
+                fetch('/page/pronunciation.html')
 
                 .then(response => {
                     // 응답을 텍스트 형태로 변환합니다.
@@ -197,7 +197,7 @@ async function fetchAndDisplayData(filename, type) {
                                     playButton.classList.add('play-audio-btn');
                                     
                                     const imgIcon = document.createElement('img');
-                                    imgIcon.src = '/AlirangKoreanClass/img/icon/audio.png'; 
+                                    imgIcon.src = '/img/icon/audio.png'; 
                                     imgIcon.alt = '재생';
                                     playButton.appendChild(imgIcon);
                                     itemBox.appendChild(playButton); 
@@ -287,7 +287,7 @@ function goToSubMenu(filename) { //서브메뉴 불러오기
     // 객체를 JSON 문자열로 변환하여 저장
     sessionStorage.setItem('selectedData', JSON.stringify(dataToStore));
     // 다음 페이지로 이동
-    window.location.href = '/AlirangKoreanClass/page/page.html';
+    window.location.href = '/page/page.html';
 }
 
 function goToBook() { //한글교재 불러오기
@@ -301,7 +301,7 @@ function goToBook() { //한글교재 불러오기
         type: 'book'
     };
     sessionStorage.setItem('selectedData', JSON.stringify(dataToStore));
-    window.location.href = '/AlirangKoreanClass/page/page.html'; 
+    window.location.href = '/page/page.html'; 
 }
 
 function goToPronunciation() { //발음듣기 불러오기
@@ -315,13 +315,13 @@ function goToPronunciation() { //발음듣기 불러오기
         type: 'pronunciation'
     };
     sessionStorage.setItem('selectedData', JSON.stringify(dataToStore));
-    window.location.href = '/AlirangKoreanClass/page/page.html'; 
+    window.location.href = '/page/page.html'; 
 }
 
 //html 적용
 document.addEventListener('DOMContentLoaded', () => {
     //const rememberedFilename = sessionStorage.getItem('lastFilename');
-    if (window.location.pathname.includes('/AlirangKoreanClass/page/page.html')) {
+    if (window.location.pathname.includes('/page/page.html')) {
         
         // sessionStorage에서 'selectedData' 문자열 가져오기
         const storedDataString = sessionStorage.getItem('selectedData');
