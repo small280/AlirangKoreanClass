@@ -4,7 +4,7 @@
     "subtitle": "Double Final sound of Consonant in Korean",
 
     "book": [
-        "hangul/img/level05/001.png",
-        "hangul/img/level05/002.png"
+        "/page/hangul/img/level05/001.png",
+        "/page/hangul/img/level05/002.png"
     ]
 }
