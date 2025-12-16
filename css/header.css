@@ -1,0 +1,88 @@
+header {
+    background-color: none;
+    display: block;
+    position: fixed; /* 뷰포트에 고정 */
+    top: 0;          /* 화면 상단에 위치 */
+    left: 0;         /* 화면 왼쪽에 위치 */
+    width: 100%;    /* 가로 폭을 화면 전체로 설정 */
+    height: 70px;     
+    background-color: #fff; /* 배경색 설정 (뒤의 내용이 비치지 않게) */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 선택 사항: 그림자 추가 */
+    transition: transform 1s ease-out;
+    overflow: hidden;
+
+    z-index: 9997;
+}
+
+.title {
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝으로 요소 정렬 및 사이의 공간 균등 분배 */
+    align-items: center;
+
+    padding-left: 50px;
+    /* border: 1px solid #ccc; */
+}
+
+.title a {
+    display: flex;
+
+    text-decoration: none;
+    /* border: 1px solid #ccc; */
+}
+
+.title img {
+    width: auto;
+    height: 25px;
+
+    transition: all 1s ease-in-out;
+}
+
+.title_kor, .title_eng {
+    position: absolute;
+    left: 90px;
+
+    font-size: 18pt;
+    font-family: 'Shilla_Culture_Bold', sans-serif;
+    color: #000000;
+    
+    transition: opacity 1s ease;
+}
+
+.title_eng {
+    opacity: 0;
+}
+
+@media (hover: hover) {
+    .title a:hover img {
+        transform: rotate(180deg);
+        transition: all 1s ease-in-out;
+    }
+    
+    .title a:hover .title_kor {
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+    
+    .title a:hover .title_eng {
+        opacity: 1;
+        transition: opacity 1s ease;
+    }
+}
+
+
+/* -------------------------------- 언더바 장식 -------------------------------- */
+
+.title_underbar {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background-image: url("../img/decoration/underbar.png");
+    background-repeat: round;
+    background-size: contain;
+    
+    z-index: -999;
+}

@@ -1,0 +1,263 @@
+@media screen and (max-width: 576px) {
+}
+@media screen and (max-width: 1024px) {
+
+.desktop-only {
+    display: none;
+}
+
+/* ---------------------------------- header 영역 ---------------------------------- */
+
+.title {
+    padding-left: 3%;
+    text-align: left;
+}
+
+.title_kor {
+    position: static;
+    padding-left: 10px;
+}
+
+.title_eng {
+    display: none;
+}
+
+
+/* ---------------------------------- 사이드바 영역 ---------------------------------- */
+
+/* 햄버거 메뉴 버튼 */
+.hamburger-menu {
+    right: 0;
+}
+
+.hamburger-menu:active {
+    background-position: 0 0;
+}
+
+/* 사이드 메뉴 영역 */
+input[type="checkbox"]:checked ~ .sidebar {
+    transform: translateX(0);
+    transition: all 0.2s ease-in;
+}
+
+.sidebar {
+    width: 100%;
+    top: 70px;
+    right: 0px;
+    transform: translateX(100%);
+    transition: all 0.2s ease-out;
+}
+
+/* ---------------------------------- 메인콘텐츠 영역 ---------------------------------- */
+
+.main-contents-01 .main-contents-text { /* 메인 콘텐츠 영역 */
+    width: 90%;
+    margin-bottom: 15%;
+}
+
+@media screen and (max-width: 576px) { /* Mobil/모바일 사이즈 */
+    .main-contents-01 .main-contents-text {
+        width: 90%;
+        margin-bottom: 1%;
+    }
+}
+
+.main-contents-btn a {
+    width: 40%;
+}
+
+.main-contents-btn a:active {
+    color: #ffffff;
+    background-color: #2b3953;
+    transition: all 0.2s ease-in-out;
+}
+
+.main-contents-03 {
+    height: 500px;
+}
+
+.main-contents-05 {
+    height: 300px;
+}
+
+/* ---------------------------------- 콘텐츠 타이틀 영역 ---------------------------------- */
+
+
+.page .subtitle .contents-title {
+    padding: 0px 5%;
+}
+
+.page .subtitle .contents-level {
+        width: 20%;
+        margin-bottom: 10%;
+    }
+
+@media screen and (max-width: 576px) {
+    .page .subtitle .contents-level {
+        width: 35%;
+        margin-bottom: 10%;
+    }
+}
+
+.page .subtitle .contents-title-text {
+    padding: 0;
+}
+
+.page .subtitle h1 {
+    font-size: 180%;
+}
+
+.page .subtitle img {
+    width: 30px;
+    display: none;
+    /* margin: auto 0; */
+}
+
+.page .contents-menu-type h3 {
+    width: 25%;
+}
+
+/* ---------------------------------- 서브메뉴 영역 ---------------------------------- */
+
+@media screen and (max-width: 576px) { /* Mobil/모바일 사이즈 */
+    .page .subMenu ul {
+        flex-direction: column;
+        padding: 0;
+    }
+  
+    .page .subMenu ul li a{
+        height: 500px;
+    }
+}
+
+.page .subMenu ul {
+    padding: 0;
+    gap: 2%;
+}
+
+.page .subMenu ul li {
+    width: 100%;
+    margin: 3% 0px;
+}
+
+.page .content-image img {
+    display: block;
+    width: 100%;
+}
+
+.page .subMenu ul li a div {
+
+    background-color: #ffffff;
+}
+
+.page .subMenu ul li .book:active div {
+    background-color: #2f8f7a;
+}
+
+.page .subMenu ul li .pronunciation:active div {
+    background-color: #c74756;
+}
+
+.page .subMenu ul li a:active span {
+    color: #ffffff;
+}
+
+.page-contents-02 .page-contents-img {
+    height: 80%;
+}
+
+.page-contents-02::before {
+    width: 100%;
+    height: 100%;
+    bottom: -10%;
+}
+
+/* ---------------------------------- 발음듣기 영역 ---------------------------------- */
+
+.chapter-grid-container {
+    padding: 0;
+}
+
+@media screen and (max-width: 576px) {
+    .chapter-grid-container {
+        grid-template-columns: repeat(var(--items-per-row-mobile, 1), 1fr);
+    }
+}
+
+.play-audio-btn {
+    height: 40px;
+    transition: all 0.1s ease-in-out;
+}
+
+.play-audio-btn:active {
+    border: 1px solid #2f8f7a;
+    background-color: #2f8f7a; /* 호버 효과 */
+}
+
+
+@media (max-width: 768px) {
+    
+    .chapter-grid-container {
+        /* 모바일은 itemsPerRowMobile 기준으로 4개 컬럼 */
+        grid-template-columns: repeat(var(--items-per-row-mobile, 4), 1fr);
+    }
+
+    /* 임시 테스트: 8번째마다 배경색을 파란색으로 변경 (줄바꿈이 아닌 색상으로 테스트) */
+    .pron-item-box.force-newline-mobile {
+        grid-column-start: 1 !important; /* 줄바꿈 규칙은 그대로 유지 */
+    }
+}
+
+
+/* ---------------------------------- Footer 영역 ---------------------------------- */
+
+.footer-img {
+    width: 100%;
+    height: 300px;
+}
+
+footer .contact {
+    padding: 5% 10%;
+}
+
+footer .contact ul {
+    padding: 0;
+}
+
+@media screen and (max-width: 576px) { /* Mobil/모바일 사이즈 */
+    footer .contact {
+        padding: 0 5%;
+        display: flex;
+        flex-wrap: wrap; /* 내용이 넘치면 줄 바꿈 허용 (모바일 기본 동작) */
+    }
+
+    footer .contact ul {
+        width: calc(50%);
+        
+        text-align: left;
+        margin-bottom: 10%;
+    }
+
+    footer .contact ul li {
+        padding: 0;
+    }
+
+    footer .contact ul li a, .sns-area span {
+        font-size: 13px;
+        padding: 0;
+    }
+
+}
+
+
+
+/* Copyright 영역 */
+footer .copyright {
+    padding: 10px 0;
+}
+
+footer .copyright .copyright-text {
+    border: none;
+}
+
+}

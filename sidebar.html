@@ -1,0 +1,79 @@
+<input type="checkbox" id="menu-toggle"/> <!-- 햄버거 메뉴 -->
+<label for="menu-toggle" class="hamburger-menu">
+    <div>
+      <span class="bar bar1"></span>
+      <span class="bar bar2"></span>
+      <span class="bar bar3"></span>
+    </div>
+</label>
+<aside id="sidebarFadeout" class="sidebar"> <!-- 사이드 영역 -->
+    <div class="fixed_menu">
+        <nav id="Hangul">
+          <ul>
+            <div class="subtitle">
+                <img src="/AlirangKoreanClass/img/icon/icon01.png">
+                <a href="#">
+                    <span class="class_name">한글 (Hangul)</span>
+                    <span class="rotate_arrow"></span> <!-- 화살표 -->
+                </a>
+            </div>
+            <li>
+              <span class="arrow"></span>
+              <a onclick="goToSubMenu('/AlirangKoreanClass/page/hangul/json/level01.json')" href="/AlirangKoreanClass/page/page.html">
+                [Level 1] Basic Consonant/Vowel of Korean
+              </a>
+            </li>
+            <li>
+              <span class="arrow"></span>
+              <a onclick="goToSubMenu('/AlirangKoreanClass/page/hangul/json/level02.json')" href="/AlirangKoreanClass/page/page.html">
+                [Level 2] Double Consonant of Korean
+              </a>
+            </li>
+            <li>
+              <span class="arrow"></span>
+              <a onclick="goToSubMenu('/AlirangKoreanClass/page/hangul/json/level03.json')" href="/AlirangKoreanClass/page/page.html">
+                [Level 3] Combined Vowel of Korean
+              </a>
+            </li>
+            <li><span class="arrow"></span>
+              <a onclick="goToSubMenu('/AlirangKoreanClass/page/hangul/json/level04.json')" href="/AlirangKoreanClass/page/page.html">
+                [Level 4] Final sound of Consonant in Korean
+              </a>
+            </li>
+            <li><span class="arrow"></span>
+              <a onclick="goToSubMenu('/AlirangKoreanClass/page/hangul/json/level05.json')" href="/AlirangKoreanClass/page/page.html">
+                [Level 5] Double Final sound of Consonant in Korean
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <nav id="Korean">
+          <ul>
+            <div class="subtitle">
+                <img src="/AlirangKoreanClass/img/icon/icon01.png">
+                <a href="#">
+                    <span class="class_name">한국어 (Korean)</span>
+                    <span class="rotate_arrow"></span> <!-- 화살표 -->
+                </a>
+            </div>
+            <li><span class="arrow"></span><a href="#">[Level 1]</a></li>
+            <li><span class="arrow"></span><a href="#">[Level 2]</a></li>
+            <li><span class="arrow"></span><a href="#">[Level 3]</a></li>
+            <li><span class="arrow"></span><a href="#">[Level 4]</a></li>
+            <li><span class="arrow"></span><a href="#">[Level 5]</a></li>
+          </ul>
+        </nav>
+        <nav id="Photo-Studio">
+          <ul>
+            <div class="subtitle">
+                <img src="/AlirangKoreanClass/img/icon/icon01.png">
+                <a href="#">
+                    <span class="class_name">사진관 (Photo Studio)</span>
+                    <span class="rotate_arrow"></span> <!-- 화살표 -->
+                </a>
+            </div>
+            <li><span class="arrow"></span><a href="#">스튜디오</a></li>
+          </ul>
+        </nav>
+    </div>
+</aside>

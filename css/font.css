@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Shilla_Culture_Bold'; /* 사용할 폰트 이름 정의 */
+    src: url('/AlirangKoreanClass/font/Shilla_Culture_B.ttf') format('truetype'); /* 폰트 파일 경로 지정 */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Shilla_Culture_Medium'; /* 사용할 폰트 이름 정의 */
+    src: url('/AlirangKoreanClass/font/Shilla_Culture_M.ttf') format('truetype'); /* 폰트 파일 경로 지정 */
+    font-weight: normal;
+    font-style: normal;
+}
