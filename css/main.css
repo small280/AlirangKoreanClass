@@ -1,0 +1,319 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    flex: 1;
+    flex-direction: column; /* 전체 페이지를 세로로 정렬 */
+    min-height: 100vh; /* 뷰포트 높이만큼 최소 높이 설정 */
+    margin: 0px auto;
+}
+
+h1, h2, h3, nav, ul, li, span, a, p, img {
+    margin: 0;
+    padding: 0;
+}
+
+img, a, button, input {
+    appearance: none;
+    
+    /* 안드로이드 Chrome에서 가끔 나타나는 아웃라인 제거 */
+    outline: none; 
+}
+
+:root {
+    /* 기본 색상 팔레트 */
+    --primary-color: #007bff;      /* 메인 파란색 */
+    --secondary-color: #7e93b6;    /* 보조 연한회색 */
+    --secondary-color: #566e90;    /* 보조 중간회색 */
+    --secondary-color: #2b3953;    /* 보조 진한회색 */
+    --accent-color: #2f8f7a;       /* 메인 청녹색 */
+    --accent-color: #c74756;       /* 메인 자주색 */
+
+    /* 텍스트 색상 */
+    --text-dark: #333333;
+    --text-light: #ffffff;
+
+    /* 배경 색상 */
+    --bg-light: #f8f9fa;
+}
+
+/* ====================================================== main 영역 ====================================================== */
+
+.wrapper { /* 부모 요소 */
+    width: 100%;
+    display: flex; /* 자식 요소들을 유연한 박스로 만듦 */
+    position: relative;
+    top: 0px;
+    justify-content: space-between; /* 양쪽 끝으로 배치 (선택 사항) */
+    flex: 1;
+
+    /* border: 1px solid #ccc; */
+}
+
+/* .contents .sidebar {
+    border: 1px solid #ccc;
+} */
+
+.loading_img {
+    width: 20px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 50px auto;
+}
+
+/* ---------------------------------- hover 기능 분류 ---------------------------------- */
+
+@media (hover: hover) {
+    .main-contents-btn a:hover {
+        color: #ffffff;
+        background-position: 0 0;
+    }
+}
+
+/* ---------------------------------- 메인 콘텐츠 영역 ---------------------------------- */
+
+.contents { /* 메인 콘텐츠 영역 */
+    width: 100%;
+}
+
+.main-contents-01 {
+    width: 100%;
+    display: flex;
+    position: relative;
+
+    justify-content: center;
+    align-items: center;  
+    flex-direction: column;
+
+    z-index: -999;
+    
+    background-image: url('/AlirangKoreanClass/img/background/Background01.png');
+    background-position: center; /* 이미지를 중앙에 배치 */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-contents-01::before {
+    content: "";
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    background: linear-gradient(to top, #ffffff, transparent);
+
+    z-index: 2;
+}
+
+.main-contents-01 .main-contents-text {
+    width: 70%;
+    height: 800px;
+
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    text-align: center;
+
+    z-index: 900;
+}
+
+.main-contents-01 span {
+    color: #7e93b6;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.main-contents-01 h1 {
+    margin: 0px 0 30px 0;
+
+    color: #566e90;
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.main-contents-01 p {
+    color: #7e93b6;
+}
+
+.main-contents-btn {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;
+    
+    /* background-color: #2f8f7a; */
+    /* border: 1px solid #ccc; */
+}
+
+.main-contents-btn a {
+    width: 20%;
+    display: block;
+    padding: 10px 0;
+    position: relative;
+
+    color:  #2b3953;
+    font-size: 18px;
+    text-decoration: none;
+    border: 1px solid #2b3953;
+    background: linear-gradient(to left, transparent, 50%, #2b3953 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0; 
+    transition: background-position 0.2s ease;
+    transition: all 0.2s ease-in-out;
+
+    z-index: 900;
+}
+
+.main-contents-02 {
+    width: 100%;
+    height: 1200px;
+
+    background-color: #ffffff;
+}
+
+.main-contents-03 {
+    width: 100%;
+    height: 1200px;
+    display: flex;
+    position: relative;
+
+    justify-content: center;
+    flex-direction: column;
+    /* display: block; */
+
+    z-index: -999;
+    
+    background-image: url('/AlirangKoreanClass/img/background/Background04.png');
+    background-position: center; /* 이미지를 중앙에 배치 */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-contents-03::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    background: linear-gradient(to bottom, #ffffff, transparent);
+
+    z-index: 2;
+}
+
+.main-contents-04 {
+    width: 100%;
+    height: 1200px;
+
+    background-color: #000000;
+}
+
+.main-contents-05 {
+    width: 100%;
+    height: 1200px;
+    display: flex;
+    position: relative;
+
+    justify-content: center;
+    flex-direction: column;
+    /* display: block; */
+
+    z-index: -999;
+    
+    background-image: url('/AlirangKoreanClass/img/background/Background07.png');
+    background-position: center; /* 이미지를 중앙에 배치 */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-contents-05::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: linear-gradient(to bottom, #000000, transparent);
+
+    z-index: 2;
+}
+
+.main-contents-06 {
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    position: relative;
+
+    background-color: #ffffff;
+}
+
+
+/* ---------------------------------- 눈오는 애니메이션 영역 ---------------------------------- */
+
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* << 컨테이너 높이 지정 필수 */
+}
+
+/* 개별 눈송이 스타일 */
+.snowflake {
+    position: absolute;
+    color: #fff;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.8;
+    /* animation-name은 JS에서 설정하므로 여기서는 제거합니다. */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 0;
+}
+
+
+@keyframes combinedFallSway {
+    0% {
+        transform: translateY(-10vh) translateX(0px);
+    }
+    25% {
+        /* 현재: 30px만큼 흔들림 */
+        transform: translateY(15vh) translateX(20px); 
+        /* 예시: 80px만큼 많이 흔들리게 */
+        /* transform: translateY(15vh) translateX(80px); */
+    }
+    50% {
+        /* 현재: -30px만큼 흔들림 */
+        transform: translateY(40vh) translateX(-20px);
+        /* 예시: -80px만큼 많이 흔들리게 */
+        /* transform: translateY(40vh) translateX(-80px); */
+    }
+    75% {
+        /* 현재: 30px만큼 흔들림 */
+        transform: translateY(65vh) translateX(20px);
+        /* 예시: 80px만큼 많이 흔들리게 */
+        /* transform: translateY(65vh) translateX(80px); */
+    }
+    100% {
+        transform: translateY(100vh) translateX(0px);
+    }
+}

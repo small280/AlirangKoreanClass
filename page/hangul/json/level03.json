@@ -1,0 +1,50 @@
+{
+    "level": "3",
+    "title": "한글 모음조합",
+    "subtitle": "Combined Vowel of Korean",
+
+    "book": [
+        "hangul/img/level03/001.png",
+        "hangul/img/level03/002.png",
+        "hangul/img/level03/003.png"
+    ],
+
+    "pronunciation": [
+        {
+            "chapterTitle" : "Chapter 1. 각 - 항",
+            "itemsPerRow": 11,
+            "itemsPerRowMobile": 6,
+            "MobileEmpty": true,
+            "words": [
+                {"category": "개", "audio": "hangul/audio/level01/가.mp3"},
+                {"category": "걔", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "게", "audio": "hangul/audio/level01/다.mp3"},
+                {"category": "계", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "과", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "괘", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "괴", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "궈", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "궤", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "귀", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "긔", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "내", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "냬", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "네", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "녜", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "놔", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "놰", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "뇌", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "눠", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "눼", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "뉘", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "늬", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "대", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "댸", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "데", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "뎨", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "돠", "audio": "hangul/audio/level01/나.mp3"},
+                {"category": "돼", "audio": "hangul/audio/level01/나.mp3"}
+            ]
+        }
+    ]
+}
