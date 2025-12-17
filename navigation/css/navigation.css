@@ -1,0 +1,175 @@
+.navigation {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    position: relative;
+    top: 70px;
+    left: 0;
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 가능 */
+    flex-direction: column;
+}
+
+.navigation .nav-title {
+    width: 100%;
+    height: 300px;
+    padding: 20px 0px;
+
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    z-index: -999;
+    
+    background-image: url('/img/background/Background09.jpg');
+    background-position: center; /* 이미지를 중앙에 배치 */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navigation .nav-title::before {
+    content: "";
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: -100px;
+    left: 0;
+
+    background: linear-gradient(to top, #ffffff, transparent);
+
+    z-index: -998;
+}
+
+.navigation .nav-title span {
+    margin: 0 15px;
+
+    font-family: 'shilla_culture_bold', sans-serif;
+    font-size: 30pt;
+    font-weight: 600;
+}
+
+.navigation .nav-title img {
+    width: auto;
+    height: 30px;
+
+    display: inline-block;
+}
+
+.navigation .nav-menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0px 30px;
+    gap: 30px;
+}
+
+.navigation nav {
+    display: flex;
+    width: 33.33%;
+    min-width: 200px;
+}
+
+.navigation nav ul {
+    width: 100%;
+    padding: 10px 40px;   
+    list-style-type: none; /* 목록 앞에 붙는 점 제거 */
+    
+}
+
+.navigation nav ul .subtitle {
+    display: flex;
+    align-items: center;
+    padding: 10px 0px 10px 0px;
+    
+}
+
+.navigation nav ul .subtitle a {
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #000000;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out;
+    margin-left: 10px;
+
+    /* border: 1px solid #ccc; 영역확인 */
+}
+
+
+.navigation nav ul img { /* 메뉴 아이콘 */
+    width: 20px;
+    height: 20px;
+}
+
+.navigation nav ul .class_name {
+    display: inline-block;
+}
+
+.navigation nav ul li {
+    width: 100%;
+    display: block;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 30px 0px 30px;
+    margin-top: 10px;
+
+    /* border: 1px solid #ccc; */
+}
+
+.navigation nav ul li a {
+    width: 100%;
+    color: gray;
+    display: block;        /* 링크 영역을 넓혀 클릭하기 쉽게 만듦 */
+    text-align: left;
+    text-decoration: none; /* 이전 질문의 밑줄 제거 코드 */
+
+    cursor: pointer;    
+    transition: all 0.3s ease-in-out;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* border: 1px solid #ccc;  */
+}
+
+.navigation nav ul li a:hover {
+    color: #2f8f7a;
+    font-weight: 500;
+    
+    padding-left: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* --------------------- Arrow --------------------- */
+
+.navigation .arrow {
+    position: absolute;
+    top: 25%;
+    left: 0px;
+
+    opacity: 0;
+    width: fit-content; /* 내용물 너비만큼만 너비를 가짐 */
+    margin-left: auto;  /* 왼쪽 마진을 자동으로 설정하여 오른쪽 정렬 */
+    margin-right: 0;
+
+    width: 10px; /*화살표 크기*/ 
+    height: 10px; /*화살표 크기*/
+    border-radius: 2px;
+    border-top: 2px solid gray; /*화살표 선*/
+    border-right: 2px solid gray; /*화살표 선*/
+    transform: rotate(45deg);
+    transition: all 0.3s ease-in-out;
+}
+
+.navigation ul li:hover .arrow{
+    left: 10px;
+    opacity: 1;
+}

@@ -1,69 +1,125 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const audioPlayer = document.getElementById('pron-audio');
-    const container = document.getElementById('pronunciation-area');
-    
-    fetch('data.json')
-        .then(response => response.json())
-        .then(jsonData => {
-            
-            jsonData.pronunciation?.forEach(chapter => {
-                
-                const h1Title = document.createElement('h1');
-                h1Title.textContent = chapter.chapterTitle;
-                container.appendChild(h1Title);
+                    // JSON 파일을 불러옵니다.
+                    fetch(filename)
+                        .then(response => response.json())
+                        .then(jsonData => {
 
-                // 챕터별로 설정된 한 줄 개수 가져오기 (기본값 1로 설정하여 오류 방지)
-                const itemsPerRow = chapter.itemsPerRow || 1;
-                const itemsPerRowMobile = chapter.itemsPerRowMobile || itemsPerRow;
-                
-                // --- 'words' 배열을 반복 처리 ---
-                chapter.words?.forEach(wordGroup => {
-                    
-                    // 각 'line' 그룹마다 새로운 컨테이너(줄) 생성
-                    const lineContainer = document.createElement('div');
-                    lineContainer.classList.add('chapter-grid-container');
+                            // if (firstChapter) {
+                            //     const itemsPerRowDesktop = firstChapter.itemsPerRow || 10;
+                            //     itemsPerRowMobile = firstChapter.itemsPerRowMobile || 4; // 값 저장
+                            //     const mobileEmptyAllowed = firstChapter.MobileEmpty || false;
+                            
+                            //     chapterGridContainer.style.setProperty('--items-per-row-desktop', itemsPerRowDesktop);
+                            //     chapterGridContainer.style.setProperty('--items-per-row-mobile', itemsPerRowMobile);
+                            
+                            //     if (mobileEmptyAllowed) {
+                            //         chapterGridContainer.setAttribute('data-mobile-empty', 'true');
+                            //     }
+                            // }
 
-                    // JSON에서 정의한 한 줄당 개수를 CSS 변수로 설정
-                    lineContainer.style.setProperty('--items-per-row-desktop', itemsPerRow);
-                    lineContainer.style.setProperty('--items-per-row-mobile', itemsPerRowMobile);
-                    
-                    // --- 'line' 배열 내부의 개별 항목 반복 처리 ---
-                    wordGroup.line?.forEach(item => {
-                        
-                        const itemBox = document.createElement('div');
-                        itemBox.classList.add('pron-item-box');
-                        
-                        const wordText = document.createElement('p');
-                        wordText.textContent = item.category;
-                        wordText.classList.add('word-text');
-                        itemBox.appendChild(wordText);
-                        
-                        const playButton = document.createElement('button');
-                        playButton.classList.add('play-audio-btn');
-                        const imgIcon = document.createElement('img');
-                        imgIcon.src = 'images/play_icon.png'; // 실제 경로로 수정
-                        imgIcon.alt = '재생';
-                        imgIcon.width = 20; 
-                        playButton.appendChild(imgIcon);
-                        itemBox.appendChild(playButton); 
+                            const firstChapter = jsonData.pronunciation?.[0];
+                            if (!firstChapter) return;
 
-                        playButton.addEventListener('click', function(event) {
-                            audioPlayer.src = item.audio; 
-                            audioPlayer.play()
-                                .catch(error => console.error("오디오 재생 실패:", error));
+                            const itemsPerRowDesktop = firstChapter?.itemsPerRow || 10;
+                            const itemsPerRowMobile = firstChapter?.itemsPerRowMobile || 4;
+                            const mobileEmptyAllowed = firstChapter?.MobileEmpty || false;
+                            
+                            const totalItemsInSet = itemsPerRowDesktop; 
+
+                            // 핵심: 모든 챕터의 아이템 순서를 누적할 변수
+                            let globalItemCount = 0;
+                            let nextBreakPoint = totalItemsInSet + 1;
+
+                            jsonData.pronunciation?.forEach(chapter => {
+                                
+                                // --- 챕터 제목 (H1) 생성 ---
+                                const h1Title = document.createElement('h1');
+                                h1Title.textContent = chapter.chapterTitle;
+                                // 제목을 메인 컨테이너에 추가합니다.
+                                container.appendChild(h1Title);
+                                
+                                // --- 챕터별 항목을 담을 Flex/Grid 컨테이너 생성 (const 사용) ---
+                                const chapterGridContainer = document.createElement('div');
+                                chapterGridContainer.classList.add('chapter-grid-container');
+                            
+                                // 스타일 설정
+                                chapterGridContainer.style.setProperty('--items-per-row-desktop', itemsPerRowDesktop);
+                                chapterGridContainer.style.setProperty('--items-per-row-mobile', itemsPerRowMobile);
+                                if (mobileEmptyAllowed) {
+                                    chapterGridContainer.setAttribute('data-mobile-empty', 'true');
+                                }
+
+                                // 챕터 내의 'words' 배열을 반복 처리합니다.
+                                chapter.words?.forEach(item => {
+
+                                    globalItemCount++; // 전체 아이템 순서 증가
+                                    
+                                    const itemBox = document.createElement('div');
+                                    itemBox.classList.add('pron-item-box');
+
+                                    // 줄바꿈 로직 적용 (전체 순번 기준)
+                                    if (mobileEmptyAllowed && globalItemCount === nextBreakPoint) {
+                                        itemBox.classList.add('force-newline-mobile');
+                                        nextBreakPoint += totalItemsInSet; // 다음 지점 업데이트 (8 -> 15...)
+                                    }
+                                
+                                    const wordText = document.createElement('p');
+                                    wordText.textContent = item.category; 
+                                    wordText.classList.add('word-text');
+                                    itemBox.appendChild(wordText);
+                                
+                                    const playButton = document.createElement('button');
+                                    playButton.classList.add('play-audio-btn');
+
+                                    const imgIcon = document.createElement('img');
+                                    imgIcon.src = '/img/icon/audio.png'; 
+                                    imgIcon.alt = '재생';
+                                    playButton.appendChild(imgIcon);
+                                    itemBox.appendChild(playButton); 
+                                
+                                    playButton.addEventListener('click', function(event) {
+                                        // audioPlayer가 null이 아닌지 확인하는 안전장치
+                                        if (audioPlayer) { 
+                                            audioPlayer.src = item.audio; 
+                                            audioPlayer.play().catch(error => console.error("오디오 재생 실패:", error));
+                                        }
+                                    });
+                                    // 아이템 박스를 해당 챕터 컨테이너에 추가
+                                    chapterGridContainer.appendChild(itemBox); 
+                                });                
+                            });
+                            container.appendChild(chapterGridContainer);
+                            
+                            // const items = chapterGridContainer.querySelectorAll('.pron-item-box');
+
+                            // // 모바일 empty 모드가 활성화되었을 때만 실행
+                            // if (chapterGridContainer.getAttribute('data-mobile-empty') === 'true') {
+
+                            //     // JSON의 데스크톱 기준 총 아이템 수 (여기서는 7 또는 11)를 가져옵니다.
+                            //     const totalItemsInSet = firstChapter.itemsPerRow || 10; 
+                                                        
+                            //     // 다음 줄바꿈이 시작될 아이템의 순서 (8, 12 등)
+                            //     let nextBreakPoint = totalItemsInSet + 1; 
+                                                        
+                            //     // 모든 아이템을 순회하면서, breakPoint에 도달하면 클래스 추가
+                            //     items.forEach((item, index) => {
+                            //         const itemOrder = index + 1; // 1부터 시작하는 순서
+                                
+                            //         if (itemOrder === nextBreakPoint) {
+                            //             console.log(`Adding force-newline-mobile to item number: ${itemOrder} (Next Break at: ${nextBreakPoint + totalItemsInSet})`); 
+                                        
+                            //             // 클래스 추가
+                            //             item.classList.add('force-newline-mobile');
+                                        
+                            //             // 다음 줄바꿈 지점을 계산하여 업데이트합니다. (예: 8 -> 15, 12 -> 23)
+                            //             nextBreakPoint += totalItemsInSet; 
+                            //         }
+                            //     });
+                            // }                    
+                        })
+                        .catch(error => {
+                            console.error('Fetch operation error:', error);
+                            // container가 null이 아닌지 확인하는 안전장치
+                            if (container) {
+                                 container.innerHTML = `<p>데이터를 불러오는 중 오류 발생: ${error.message}</p>`;
+                            }
                         });
-
-                        lineContainer.appendChild(itemBox);
-                    });
-                    
-                    // 완성된 한 줄을 메인 컨테이너에 추가
-                    container.appendChild(lineContainer);
-                });
-            });
-
-        })
-        .catch(error => {
-            console.error('Fetch operation error:', error);
-            container.innerHTML = `<p>데이터를 불러오는 중 오류 발생: ${error.message}</p>`;
-        });
-});

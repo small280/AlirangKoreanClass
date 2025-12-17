@@ -103,6 +103,7 @@ input[type="checkbox"]:checked ~ .hamburger-menu .bar3 {
 
 /* 메뉴 숨기기/보이기 (선택 사항) */
 .sidebar {
+    width: 30%;
     height: 100vh;
     background-color: white;
     position: fixed;
@@ -118,6 +119,29 @@ input[type="checkbox"]:checked ~ .hamburger-menu .bar3 {
     padding: 20px 0px 70px 0px;
     scroll-behavior: smooth;
 }
+
+.sidebar .sidebar-menu-icon {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .sidebar-menu-icon a {
+    text-decoration: none;
+    font-size: 20pt;
+    font-weight: 600;
+    font-family: shilla_culture_bold, sans-serif;
+    color: #000000;
+}
+
+/* .sidebar .sidebar-menu-icon img {
+    width: auto;
+    height: 20px;
+    margin: 0px 20px 0px 20px;
+} */
 
 .sidebar nav ul {
     padding: 10px 40px;
@@ -169,6 +193,7 @@ input[type="checkbox"]:checked ~ .hamburger-menu .bar3 {
 .sidebar nav ul li {
     width: 100%;
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: flex-start;
     padding: 0px 30px 0px 30px;
@@ -199,11 +224,11 @@ input[type="checkbox"]:checked ~ .hamburger-menu .bar3 {
     transition: all 0.2s ease-in-out;
 }
 
-/* --------------------- 화살표 --------------------- */
+/* --------------------- Arrow --------------------- */
 
-.arrow {
+.sidebar .arrow {
     position: absolute;
-    left: 35px;
+    left: 0px;
 
     opacity: 0;
     width: fit-content; /* 내용물 너비만큼만 너비를 가짐 */
@@ -219,8 +244,8 @@ input[type="checkbox"]:checked ~ .hamburger-menu .bar3 {
     transition: all 0.3s ease-in-out;
 }
 
-nav ul li:hover .arrow{
-    left: 45px;
+.sidebar ul li:hover .arrow {
+    left: 18px;
     opacity: 1;
 }
 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/page/css/page.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="/navigation/css/navigation.css">
+
+    <link rel="icon" href="/img/logo/logo.png" type="image/png">
+    <title>알이랑 코리안 클래스</title>
+</head>
+
+<body ondragstart="return false;">
+
+    <header id="header-area"></header> <!-------------------- Header 불러오기 -------------------->
+    
+    <main class="wrapper"> <!-- 중단 영역 -->
+        <div id="navigation" class="navigation">
+            <div class="nav-title">
+                <img src="/img/icon/icon01.png" alt="">
+                <span >Menu Navigation</span>
+                <img src="/img/icon/icon01.png" alt="">
+            </div>
+            
+            <div class="nav-menu">
+                <nav id="Hangul">
+                    <ul>
+                        <div class="subtitle">
+                            <img src="/img/icon/icon01.png">
+                            <a href="#">
+                                <span class="class_name">한글 (Hangul)</span>
+                            </a>
+                        </div>
+                        <li>
+                          <span class="arrow"></span>
+                          <a onclick="goToSubMenu('/page/hangul/json/level01.json')" href="/page/page.html">
+                            [Level 1] Basic Consonant/Vowel of Korean
+                          </a>
+                        </li>
+                        <li>
+                          <span class="arrow"></span>
+                          <a onclick="goToSubMenu('/page/hangul/json/level02.json')" href="/page/page.html">
+                            [Level 2] Double Consonant of Korean
+                          </a>
+                        </li>
+                        <li>
+                          <span class="arrow"></span>
+                          <a onclick="goToSubMenu('/page/hangul/json/level03.json')" href="/page/page.html">
+                            [Level 3] Combined Vowel of Korean
+                          </a>
+                        </li>
+                        <li><span class="arrow"></span>
+                          <a onclick="goToSubMenu('/page/hangul/json/level04.json')" href="/page/page.html">
+                            [Level 4] Final sound of Consonant in Korean
+                          </a>
+                        </li>
+                        <li><span class="arrow"></span>
+                          <a onclick="goToSubMenu('/page/hangul/json/level05.json')" href="/page/page.html">
+                            [Level 5] Double Final sound of Consonant in Korean
+                          </a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav id="Korean">
+                    <ul>
+                        <div class="subtitle">
+                            <img src="/img/icon/icon01.png">
+                            <a href="#">
+                                <span class="class_name">한국어 (Korean)</span>
+                            </a>
+                        </div>
+                        <li><span class="arrow"></span><a href="#">[Level 1] Alirang Korean Class</a></li>
+                        <li><span class="arrow"></span><a href="#">[Level 2] Alirang Korean Class</a></li>
+                        <li><span class="arrow"></span><a href="#">[Level 3] Alirang Korean Class</a></li>
+                        <li><span class="arrow"></span><a href="#">[Level 4] Alirang Korean Class</a></li>
+                        <li><span class="arrow"></span><a href="#">[Level 5] Alirang Korean Class</a></li>
+                    </ul>
+                </nav>
+                <nav id="Photo-Studio">
+                    <ul>
+                        <div class="subtitle">
+                            <img src="/img/icon/icon01.png">
+                            <a href="#">
+                                <span class="class_name">사진관 (Photo Studio)</span>
+                            </a>
+                        </div>
+                        <li><span class="arrow"></span><a href="#">스튜디오</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer-area"></footer> <!-------------------- Footer 불러오기 -------------------->
+
+    <!-- 자바스크립트 불러오기 -->
+    <script src="/js/layout.js"></script>
+    <script src="/page/js/page.js"></script>
+</body>
+</html>

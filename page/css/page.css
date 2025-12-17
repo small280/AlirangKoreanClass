@@ -27,7 +27,7 @@
     background-position: center; /* 이미지를 중앙에 배치 */
     background-repeat: no-repeat;
     background-size: cover;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #ccc;
 
     /* border: 1px solid #ccc; */
     z-index: 1;
@@ -58,10 +58,11 @@
 }
 
 .page .subtitle .contents-level {
-    width: 15%;
+    width: 10%;
     display: block;
     padding: 2px 10px;
-    margin: 50px auto;
+    margin-top: 50px;
+    margin-bottom: 150px;
 
     text-align: center;
     font-size: 120%;
@@ -115,23 +116,25 @@
     text-align: center;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     
     /* border: 1px solid #ccc; */
 
     z-index: 999;
 }
 
-.page .contents-menu-type h3 {
-    width: 10%;
+.page .contents-menu-type .bar {
+    width: 3%;
+    height: 3px;
+    background-color: #2f8f7a;
+    text-align: center;
+}
 
-    display: block;
-    font-size: 20px;
+.page .contents-menu-type h3 {
+    font-size: 120%;
     font-weight: 300;
     color: #000000;
 
-    border-top: 5px solid #2f8f7a;
-
-    margin: 0px auto;
     padding: 30px 0px 30px 0px;
 }
 
@@ -168,9 +171,10 @@
     width: 100%;
     height: 600px;
 
+    display: flex;
     overflow: hidden;
     position: relative; /* 가상 요소의 기준점 설정 */
-    display: flex;
+    
     flex-direction: column;
     justify-content: flex-end;
 
@@ -221,23 +225,24 @@
 }
 
 .page .subMenu ul li a .tag {
-    margin-bottom: 50px;
+    margin-bottom: 10%;
 
+    display: block;
     color: rgb(159, 159, 159);
-    font-size: 15px;
+    font-size: 80%;
     font-weight: 500;
 }
 
 .page .subMenu ul li a .kor {
     color: #000000;
 
-    font-size: 40px;
+    font-size: 250%;
 }
 
 .page .subMenu ul li a .eng {
     color: #000000;
 
-    font-size: 25px;
+    font-size: 150%;
     font-weight: 300;
 }
 
@@ -340,7 +345,23 @@
     width: 70%;
 }
 
+.chapter-slide img {
+    display: block;
+    width: 70%; /* 기존에 설정하신 너비 유지 */
+    height: auto;
+    object-fit: contain; /* 이미지 비율 유지 */
+}
+
+
 /* ---------------------------------------- Pronunciation 콘텐츠 영역 ---------------------------------------- */
+
+.page #pronunciation-area {
+    display: flex;
+    position: relative;
+    width: 100%;
+    padding: 0px 50px;
+    justify-content: center;
+}
 
 /* 1. 부모 컨테이너를 Flexbox로 설정 */
 .page .flex-container {
@@ -350,28 +371,56 @@
     justify-content: flex-start; /* 왼쪽부터 채우기 */
 }
 
-.page .flex-container h1 {
-    display: block;
+.chapter-slider-wrapper {
+    width: 100%;
 
+    display: flex;             /* 챕터들을 가로로 나열 */
+    overflow-x: auto;          /* 가로 스크롤 허용 */
+    scroll-snap-type: x mandatory; /* 가로 방향 스냅 강제 설정 */
+    -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+    gap: 20px;                 /* 챕터 사이 간격 */
+    padding-bottom: 20px;      /* 하단 스크롤바 공간 */
+    align-items: stretch;
+
+    /* 스크롤바 숨기기 (표준) */
+    scrollbar-width: none; 
+    /* 스크롤바 숨기기 (IE/Edge) */
+    -ms-overflow-style: none; 
+}
+
+.chapter-slider-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* 2. 슬라이드 한 섹션 (제목 + 그리드) */
+.chapter-slide {
+    flex: 0 0 100%;             /* 정확히 화면 너비만큼만 차지 */
+    width: 100%;                /* 너비 고정 */
+    min-width: 100%;      /* 챕터가 하나여도 무조건 화면 너비 100% 차지 */
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;     /* 패딩이 너비에 포함되도록 설정 */
+}
+
+.page .chapter-slide h1 {
+    display: block;
     color: #2f8f7a;
     font-size: 25px;
-    font-weight: 500;
-    text-align: center;
-
-    padding: 10px 15px;
-    margin: 30px auto 100px auto;
-
     border: 2px solid #2f8f7a;
+    padding: 10px 15px;
+    margin: 30px auto;        /* 슬라이드 내부 중앙 정렬 */
+    width: fit-content;
 }   
 
 .chapter-grid-container {
     width: 100%;
-    display: grid; /* Flexbox 대신 Grid 사용 */
-    gap: 0px; /* 항목 사이의 간격 */
-
-    padding: 0px 100px;
-    margin-bottom: 30px;
+    display: grid; /* Flexbox 대신 Grid 사용 */ 
     grid-template-columns: repeat(var(--items-per-row-desktop, 10), 1fr);
+
+    box-sizing: border-box; 
+    margin-bottom: 30px;
 }
 
 /* 2. 개별 항목(itemBox)의 크기 설정 */
@@ -427,4 +476,94 @@
     display: block;
 
     margin: 0px auto;
+}
+
+/* 화살표 공통 스타일 */
+.slide-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000; /* 슬라이드보다 위에 위치 */
+    color: #2f8f7a;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+
+    opacity: 1;
+    visibility: visible;
+}
+
+/* JS에서 opacity가 0이 되었을 때의 상태 */
+.slide-nav-btn[style*="opacity: 0"] {
+    visibility: hidden; /* 완전히 투명해지면 숨김 처리 */
+}
+
+.slide-nav-btn:hover {
+    color: #c74756;
+}
+
+.slide-nav-btn.next {
+    padding-left: 20px;
+}
+
+.slide-nav-btn.prev {
+    padding-right: 20px;
+}
+
+.slide-nav-btn:hover.next {
+    padding-left: 40px;
+}
+
+.slide-nav-btn:hover.prev {
+    padding-right: 40px;
+}
+
+/* 양 옆 배치 */
+.slide-nav-btn.prev {
+    left: 0px; /* #pronunciation-area의 왼쪽 끝 */
+}
+
+.slide-nav-btn.next {
+    right: 0px; /* #pronunciation-area의 오른쪽 끝 */
+}
+
+.page-numbers-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 10px;
+    margin-bottom: 20px;
+    min-height: 30px; /* 번호가 다시 그려질 때 높이 깜빡임 방지 */
+}
+
+.page-num-item {
+    cursor: pointer;
+    font-size: 16px;
+    color: #999;
+    min-width: 20px;
+    text-align: center;
+    transition: color 0.2s;
+}
+
+.page-num-item.active {
+    color: #2f8f7a;
+    font-weight: bold;
+    text-decoration: underline; /* 현재 위치 강조 */
+}
+
+/* 구분선 스타일 */
+.page-divider {
+    color: #ddd;
+    font-size: 14px;
+    pointer-events: none;
+    user-select: none;
 }

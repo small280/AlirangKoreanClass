@@ -72,6 +72,11 @@ input[type="checkbox"]:checked ~ .sidebar {
     transition: all 0.2s ease-in-out;
 }
 
+
+.main-contents-02 .video-container, .main-contents-02 .main-contents-text {
+    width: 90%;
+}
+
 .main-contents-03 {
     height: 500px;
 }
@@ -92,7 +97,7 @@ input[type="checkbox"]:checked ~ .sidebar {
         margin-bottom: 10%;
     }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
     .page .subtitle .contents-level {
         width: 35%;
         margin-bottom: 10%;
@@ -113,20 +118,60 @@ input[type="checkbox"]:checked ~ .sidebar {
     /* margin: auto 0; */
 }
 
-.page .contents-menu-type h3 {
-    width: 25%;
+@media screen and (max-width: 768px) {
+.page .contents-menu-type .bar {
+    width: 10%;
+}
 }
 
-/* ---------------------------------- 서브메뉴 영역 ---------------------------------- */
+/* ---------------------------------- Navigation 영역 ---------------------------------- */
 
-@media screen and (max-width: 576px) { /* Mobil/모바일 사이즈 */
+.navigation .nav-menu {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigation .nav-title {
+    height: 200px;
+}
+
+.navigation .nav-title::before {
+    width: auto;
+    display: block;
+    height: 100px;
+    top: 0;
+}
+
+.navigation .nav-menu nav {
+    width: 100%;
+}
+
+/* ---------------------------------- SubMenu 영역 ---------------------------------- */
+
+@media screen and (max-width: 768px) { /* Mobil/모바일 사이즈 */
     .page .subMenu ul {
         flex-direction: column;
         padding: 0;
     }
   
-    .page .subMenu ul li a{
-        height: 500px;
+    .page .subMenu ul li a {
+        height: 400%;
+        aspect-ratio: 3 / 4;
+    }
+
+    .page .subMenu ul li a .tag {
+        margin-bottom: 10%;
+        
+        font-size: 150%;
+    }
+    
+    .page .subMenu ul li a .kor {
+        font-size: 450%;
+    }
+    
+    .page .subMenu ul li a .eng {
+        font-size: 200%;
     }
 }
 
@@ -179,9 +224,15 @@ input[type="checkbox"]:checked ~ .sidebar {
     padding: 0;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
     .chapter-grid-container {
         grid-template-columns: repeat(var(--items-per-row-mobile, 1), 1fr);
+        border: 1px solid #fac963;
+        background-color: #d8d8d8;
+    }
+
+    .pron-item-box {
+        background-color: #fff;
     }
 }
 
@@ -204,11 +255,29 @@ input[type="checkbox"]:checked ~ .sidebar {
     }
 
     /* 임시 테스트: 8번째마다 배경색을 파란색으로 변경 (줄바꿈이 아닌 색상으로 테스트) */
-    .pron-item-box.force-newline-mobile {
+    #pronunciation-area .pron-item-box.force-newline-mobile {
         grid-column-start: 1 !important; /* 줄바꿈 규칙은 그대로 유지 */
     }
 }
 
+.slide-nav-btn {
+    display: none !important;
+}
+
+.page-num-item {
+    font-size: 16px; /* 모바일에서는 숫자를 살짝 작게 */
+    column-gap: 5px;
+}
+.page-divider {
+    margin: 0 2px; /* 구분선 간격 축소 */
+}
+
+@media (max-width: 768px) {
+    .page-num-item {
+        padding: 8px; /* 터치하기 편하게 영역 확대 */
+        font-size: 20px;
+    }
+}
 
 /* ---------------------------------- Footer 영역 ---------------------------------- */
 
@@ -249,8 +318,6 @@ footer .contact ul {
     }
 
 }
-
-
 
 /* Copyright 영역 */
 footer .copyright {
