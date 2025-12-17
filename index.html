@@ -4,17 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-        // 현재 호스트 이름을 기반으로 베이스 경로를 결정합니다.
-        const baseHref = window.location.hostname.includes('github.io') 
-            ? '/AlirangKoreanClass/' 
-            : '/'; // 로컬 환경일 경우 '/'
-        
-        // base 태그를 동적으로 생성하여 설정합니다.
-        const baseTag = document.createElement('base');
-        baseTag.href = baseHref;
-        document.head.appendChild(baseTag);
-    </script>
     
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/main.css">
