@@ -289,7 +289,7 @@
     display: block;
     position: relative;
     
-    background-image: url('/img/background/Background08.png');
+    background-image: url('/img/background/Background08.jpg');
     background-position: center; /* 이미지를 중앙에 배치 */
     background-repeat: no-repeat;
     background-size: cover;
