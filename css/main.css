@@ -229,21 +229,20 @@ img, a, button, input {
 }
 
 .main-contents-02 .video-container {
-  position: relative;
-  width: 60%;
-  aspect-ratio: 16 / 9; /* 2025년 기준 가장 현대적인 비율 유지 방식 */
+    position: relative;
+    width: 60%;
+    aspect-ratio: 16 / 9; /* 2025년 기준 가장 현대적인 비율 유지 방식 */
 }
 
 .main-contents-02 .video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  z-index: 900;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    z-index: 900;
 }
-
 
 .main-contents-03 {
     width: 100%;

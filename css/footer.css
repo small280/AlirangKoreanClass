@@ -49,7 +49,7 @@ footer .contact {
     justify-content: center;
 
     /* [수정] 위쪽 패딩을 줄여 이미지와 밀착시키거나 필요한 만큼 조정 */
-    padding: 30px 20px; 
+    padding: 30px 100px;
     
     /* [중요] 배경색이 흰색이면 이미지 끝부분과 색상을 맞춰야 함 */
     background-color: transparent; 
@@ -142,9 +142,16 @@ footer .copyright .logo a {
 
 footer .copyright .copyright-text {
     border-left: 1px solid gray;
+    border-right: 1px solid gray;
 }
 
 footer .copyright .copyright-text a {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+footer .copyright .version {
+    color: gray;
     font-size: 14px;
     font-weight: 300;
 }

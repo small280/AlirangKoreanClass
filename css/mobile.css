@@ -119,9 +119,17 @@ input[type="checkbox"]:checked ~ .sidebar {
 }
 
 @media screen and (max-width: 768px) {
-.page .contents-menu-type .bar {
-    width: 10%;
-}
+    .page .contents-menu-type .bar {
+        width: 10%;
+    }
+
+    .main-contents-02 {
+        padding: 10px;
+    }
+
+    .main-contents-02 .video-container {
+        width: 100%;
+    }
 }
 
 /* ---------------------------------- Navigation 영역 ---------------------------------- */
@@ -136,10 +144,6 @@ input[type="checkbox"]:checked ~ .sidebar {
     align-items: flex-start; 
 }
 
-.navigation .nav-title {
-    aspect-ratio: 4 / 2 !important;
-}
-
 .navigation .nav-title span {
     /* 모바일에서는 화면 너비 대비 폰트 비중을 조금 더 높임 */
     font-size: clamp(20px, 8vw, 32px);
@@ -152,9 +156,13 @@ input[type="checkbox"]:checked ~ .sidebar {
 }
 
 @media screen and (max-width: 768px) {
+    .navigation .nav-title {
+        aspect-ratio: 4 / 3 !important;
+    }
+
     .navigation .nav-title img {
         /* 모바일에서 아이콘이 너무 작아 보이면 비율을 살짝 조정 */
-        width: 1.2  em !important;
+        width: 1.1  em !important;
     }
     
 }
@@ -219,15 +227,19 @@ input[type="checkbox"]:checked ~ .sidebar {
     .page .subMenu ul li a .tag {
         margin-bottom: 10%;
         
-        font-size: 100%;
+        font-size: 0.8em;
     }
     
     .page .subMenu ul li a .kor {
-        font-size: 300%;
+        font-size: 2em;
     }
     
     .page .subMenu ul li a .eng {
-        font-size: 200%;
+        font-size: 1.3em;
+    }
+    .page-contents-02 .page-contents-img {
+        aspect-ratio: 3 / 4;
+        height: 80%;
     }
 }
 
@@ -275,8 +287,6 @@ input[type="checkbox"]:checked ~ .sidebar {
 }
 
 /* ---------------------------------- 발음듣기 영역 ---------------------------------- */
-
-
 
 .chapter-grid-container {
     padding: 0;
