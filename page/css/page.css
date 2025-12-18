@@ -280,38 +280,42 @@
 
 .page-contents-02 {
     width: 100%;
-    height: 1000px;
-    display: flex;
-    position: relative;
-    
-    justify-content: center;
-    flex-direction: column;
+    position: relative; /* 자식 요소들의 기준점 */
+    overflow: hidden;
 }
 
 .page-contents-02 .page-contents-img {
-    height: 100%;
+    width: 100%;
+    /* [핵심] 고정 높이 대신 비율 설정 (PC 기준 16:9) */
+    aspect-ratio: 16 / 9; 
+    height: auto;
 
     display: block;
     position: relative;
     
     background-image: url('/img/background/Background08.jpg');
-    background-position: center; /* 이미지를 중앙에 배치 */
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -999;
+    
+    /* z-index는 -999보다 배경 역할을 하도록 1로 설정하는 것이 디버깅에 유리합니다 */
+    z-index: 1;
 }
 
+/* 상단 흰색 배경과 자연스럽게 이어지는 그라데이션 */
 .page-contents-02::before {
     content: "";
     width: 100%;
-    height: 70%;
+    height: 40%; /* 그라데이션 높이 조절 */
     position: absolute;
-    bottom: 30%;
+    top: 0; /* 위에서부터 아래로 */
     left: 0;
 
-    background: linear-gradient(to bottom, #ffffff, transparent);
+    /* 하단으로 갈수록 투명해지도록 설정 */
+    background: linear-gradient(to bottom, #ffffff 10%, transparent 100%);
 
-    z-index: -990;
+    /* 이미지(z-index: 1) 위에 얹혀야 하므로 수치 조정 */
+    z-index: 2;
 }
 
 .page-contents-03 {
@@ -333,16 +337,18 @@
 
 /* ---------------------------------------- Book 콘텐츠 영역 ---------------------------------------- */
 
+
 .page .content-image {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
+    padding: 0px 70px;
     flex: 1;
 }
 
 .page .content-image img {
     display: block;
-    width: 70%;
+    width: 60%;
 }
 
 .chapter-slide img {
@@ -359,7 +365,7 @@
     display: flex;
     position: relative;
     width: 100%;
-    padding: 0px 50px;
+    padding: 0px 70px;
     justify-content: center;
 }
 

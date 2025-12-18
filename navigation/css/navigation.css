@@ -1,31 +1,27 @@
 .navigation {
     width: 100%;
-    height: 100vh;
-
+    min-height: 100vh; /* [중요] 100vh 고정 대신 '최소' 높이로 변경 */
+    height: auto;      /* 내용이 많아지면 자동으로 늘어남 */
     display: flex;
-    position: relative;
-    top: 70px;
-    left: 0;
-    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 가능 */
     flex-direction: column;
+    position: relative;
+    overflow-y: auto;  /* 세로 스크롤 허용 */
+    overflow-x: hidden;
+    
+    /* [중요] 자식들을 중앙으로 몰아넣는 설정을 해제하거나 시작점으로 변경 */
+    align-items: flex-start; 
 }
 
 .navigation .nav-title {
     width: 100%;
-    height: 300px;
-    padding: 20px 0px;
-
+    aspect-ratio: 16 / 5;
     display: flex;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 50px;
     justify-content: center;
     align-items: center;
-    text-align: center;
-
-    z-index: -999;
+    position: relative;
     
     background-image: url('/img/background/Background09.jpg');
-    background-position: center; /* 이미지를 중앙에 배치 */
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -33,50 +29,67 @@
 .navigation .nav-title::before {
     content: "";
     width: 100%;
-    height: 400px;
+    /* [수정] 높이를 %로 설정하여 부모 크기에 반응하게 함 */
+    height: 50%; 
     position: absolute;
-    top: -100px;
     left: 0;
+    /* [수정] 하단에 딱 붙도록 위치 지정 */
+    bottom: 0; 
 
-    background: linear-gradient(to top, #ffffff, transparent);
-
-    z-index: -998;
+    /* [수정] 하단 배경색(#ffffff)과 자연스럽게 이어지도록 상향 그라데이션 */
+    background: linear-gradient(to top, #ffffff 10%, transparent 100%);
+    z-index: 2;
 }
 
-.navigation .nav-title span {
-    margin: 0 15px;
 
+.navigation .nav-title span {
+    /* [수정] 고정 30pt 대신 화면 너비에 비례하는 vw 단위 사용 */
+    /* 화면 너비의 6% 크기를 기본으로 하되, 너무 작아지거나 커지지 않게 제한 */
+    font-size: clamp(24px, 6vw, 45px); 
+    
+    margin: 0 1vw; /* 여백도 화면 너비에 따라 조절 */
     font-family: 'shilla_culture_bold', sans-serif;
-    font-size: 30pt;
     font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap; /* 글자가 중간에 잘리지 않도록 설정 */
 }
 
 .navigation .nav-title img {
-    width: auto;
-    height: 30px;
-
+    /* [수정] 고정 30px 대신 텍스트 크기에 비례하는 em 단위 사용 */
+    /* 이렇게 하면 위 span의 폰트 크기가 변할 때 이미지도 같이 커지거나 작아집니다. */
+    width: 1.7em;
+    height: auto; /* 폰트 크기의 약 80% 높이 유지 */
+    
     display: inline-block;
+    vertical-align: middle; /* 텍스트와 중앙 정렬 */
 }
+
+
+/* Nav 메뉴영역 */
 
 .navigation .nav-menu {
     width: 100%;
     display: flex;
-    justify-content: center;
-    padding: 0px 30px;
+    flex-wrap: wrap; 
+    justify-content: center; /* PC에서는 중앙 나열 */
+    padding: 30px 20px 80px 20px;
     gap: 30px;
-}
-
+    box-sizing: border-box; /* 패딩이 너비를 넘지 않도록 함 */
+}   
 .navigation nav {
     display: flex;
-    width: 33.33%;
-    min-width: 200px;
+    /* [수정] 기본 33% 너비 유지 */
+    width: calc(33.33% - 20px); 
+    min-width: 250px;
+    justify-content: flex-start; /* 왼쪽 정렬 */
 }
 
 .navigation nav ul {
     width: 100%;
-    padding: 10px 40px;   
-    list-style-type: none; /* 목록 앞에 붙는 점 제거 */
-    
+    /* [수정] 패딩을 줄여 왼쪽 정렬 효과 극대화 */
+    padding: 10px 10px;   
+    list-style-type: none;
+    margin: 0;
 }
 
 .navigation nav ul .subtitle {

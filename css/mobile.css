@@ -132,19 +132,75 @@ input[type="checkbox"]:checked ~ .sidebar {
     align-items: center;
 }
 
+.navigation {
+    align-items: flex-start; 
+}
+
 .navigation .nav-title {
-    height: 200px;
+    aspect-ratio: 4 / 2 !important;
 }
 
-.navigation .nav-title::before {
-    width: auto;
-    display: block;
-    height: 100px;
-    top: 0;
+.navigation .nav-title span {
+    /* 모바일에서는 화면 너비 대비 폰트 비중을 조금 더 높임 */
+    font-size: clamp(20px, 8vw, 32px);
+    margin: 0 2vw;
 }
 
-.navigation .nav-menu nav {
+.navigation .nav-title img {
+    /* 모바일에서 아이콘이 너무 작아 보이면 비율을 살짝 조정 */
+    width: 1.5em !important;
+}
+
+@media screen and (max-width: 768px) {
+    .navigation .nav-title img {
+        /* 모바일에서 아이콘이 너무 작아 보이면 비율을 살짝 조정 */
+        width: 1.2  em !important;
+    }
+    
+}
+
+.navigation .nav-menu {
     width: 100%;
+    padding: 20px; /* 모바일 전용 여백 */
+    display: flex;
+    flex-direction: column; /* 세로 나열 */
+    justify-content: flex-start; /* 왼쪽 위부터 배치 */
+    align-items: flex-start;    /* 자식(nav)들을 왼쪽으로 붙임 */
+    gap: 20px;
+}
+
+.navigation nav {
+    width: 100% !important;   /* 가로 꽉 채우기 */
+    min-width: 100% !important;
+    margin: 0;                /* 기본 여백 제거 */
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.navigation nav ul {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* 서브 타이틀(a태그 등) 왼쪽 끝에 붙이기 */
+.navigation nav ul .subtitle {
+    padding-left: 0;
+    justify-content: flex-start;
+}
+
+.navigation nav ul li {
+    width: 100%;
+    padding-left: 0; /* 불필요한 왼쪽 패딩 제거 */
+    margin-left: 0;
+    text-align: left;
+}
+
+.navigation nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 0px 0; /* 클릭하기 좋게 위아래 여백만 제공 */
+    text-align: left;
 }
 
 /* ---------------------------------- SubMenu 영역 ---------------------------------- */
@@ -163,11 +219,11 @@ input[type="checkbox"]:checked ~ .sidebar {
     .page .subMenu ul li a .tag {
         margin-bottom: 10%;
         
-        font-size: 150%;
+        font-size: 100%;
     }
     
     .page .subMenu ul li a .kor {
-        font-size: 450%;
+        font-size: 300%;
     }
     
     .page .subMenu ul li a .eng {
@@ -220,8 +276,24 @@ input[type="checkbox"]:checked ~ .sidebar {
 
 /* ---------------------------------- 발음듣기 영역 ---------------------------------- */
 
+
+
 .chapter-grid-container {
     padding: 0;
+}
+
+.page #pronunciation-area {
+    padding: 0;
+}
+
+@media screen and (max-width: 546px) {
+    .page #page-contents-area {
+        padding: 2%;
+    }
+
+    .page #pronunciation-area {
+    padding: 0;
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -281,22 +353,23 @@ input[type="checkbox"]:checked ~ .sidebar {
 
 /* ---------------------------------- Footer 영역 ---------------------------------- */
 
-.footer-img {
-    width: 100%;
-    height: 300px;
-}
 
 footer .contact {
     padding: 5% 10%;
 }
 
 footer .contact ul {
+    padding: 0 10px;
+}
+
+footer .contact ul li a, .sns-area span {
+    font-size: 80%;
     padding: 0;
 }
 
-@media screen and (max-width: 576px) { /* Mobil/모바일 사이즈 */
+@media screen and (max-width: 768px) { /* Mobil/모바일 사이즈 */
     footer .contact {
-        padding: 0 5%;
+        padding: 0 10% !important;
         display: flex;
         flex-wrap: wrap; /* 내용이 넘치면 줄 바꿈 허용 (모바일 기본 동작) */
     }
@@ -305,19 +378,28 @@ footer .contact ul {
         width: calc(50%);
         
         text-align: left;
-        margin-bottom: 10%;
+        margin-bottom: 5%;
     }
 
     footer .contact ul li {
-        padding: 0;
+        padding: 5px 0;
     }
 
     footer .contact ul li a, .sns-area span {
-        font-size: 13px;
+        font-size: 100%;
         padding: 0;
     }
 
+    .footer-img {
+        min-height: 250px;
+        aspect-ratio: 4 / 3; /* 모바일에서는 세로로 좀 더 길게 보이도록 비율 조정 */
+    }
+    footer .contact {
+        padding: 30px 20px;
+    }
+
 }
+
 
 /* Copyright 영역 */
 footer .copyright {

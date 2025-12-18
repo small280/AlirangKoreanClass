@@ -88,7 +88,7 @@ img, a, button, input {
     width: 100%;
     display: flex;
     position: relative;
-
+    aspect-ratio: 16 / 5;
     justify-content: center;
     align-items: center;  
     flex-direction: column;

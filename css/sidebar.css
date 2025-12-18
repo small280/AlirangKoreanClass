@@ -137,11 +137,11 @@ input[type="checkbox"]:checked ~ .hamburger-menu .bar3 {
     color: #000000;
 }
 
-/* .sidebar .sidebar-menu-icon img {
+.sidebar .sidebar-menu-icon img {
     width: auto;
     height: 20px;
     margin: 0px 20px 0px 20px;
-} */
+}
 
 .sidebar nav ul {
     padding: 10px 40px;
