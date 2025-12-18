@@ -43,22 +43,17 @@ header {
 .title_kor, .title_eng {
     display: flex;
     align-items: center;
-}
-
-.title_kor img, .title_eng img {
-    width: auto;
-    height: 25px;
     position: absolute;
     left: 90px;
 
-    /* font-size: 18pt;
-    font-family: 'Shilla_Culture_Bold', sans-serif;
-    color: #000000; */
-    
+    font-size: 1.5em;
+    color: #000;
+    text-decoration: none;
+    font-family: shilla_culture_bold, sans-serif;
     transition: opacity 1.5s ease;
 }
 
-.title_eng img {
+.title_eng {
     opacity: 0;
 }
 
@@ -68,12 +63,12 @@ header {
         transition: all 1s ease-in-out;
     }
     
-    .title a:hover .title_kor img {
+    .title a:hover .title_kor {
         opacity: 0;
         transition: opacity 1.5s ease;
     }
 
-    .title a:hover .title_eng img {
+    .title a:hover .title_eng {
         opacity: 1;
         transition: opacity 1.5s ease;
     }

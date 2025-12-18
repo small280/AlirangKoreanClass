@@ -11,19 +11,24 @@
     text-align: left;
 }
 
-.title_kor img {
+.logo {
+    position: relative;
+    left: 15px;
+}
+
+.title_kor {
     width: auto;
     height: 25px;
     position: static;
     padding-left: 10px;
 }
 
-.title_eng img {
+.title_eng {
     display: none;
 }
 
 
-/* ---------------------------------- 사이드바 영역 ---------------------------------- */
+/* ---------------------------------- Sidebar 영역 ---------------------------------- */
 
 /* 햄버거 메뉴 버튼 */
 .hamburger-menu {
@@ -48,7 +53,7 @@ input[type="checkbox"]:checked ~ .sidebar {
     transition: all 0.2s ease-out;
 }
 
-/* ---------------------------------- 메인콘텐츠 영역 ---------------------------------- */
+/* ---------------------------------- Main 영역 ---------------------------------- */
 
 .main-contents-01 .main-contents-text { /* 메인 콘텐츠 영역 */
     width: 90%;
@@ -85,7 +90,7 @@ input[type="checkbox"]:checked ~ .sidebar {
     height: 300px;
 }
 
-/* ---------------------------------- 콘텐츠 타이틀 영역 ---------------------------------- */
+/* ---------------------------------- Contents Title 영역 ---------------------------------- */
 
 
 .page .subtitle .contents-title {
@@ -286,7 +291,17 @@ input[type="checkbox"]:checked ~ .sidebar {
     bottom: -10%;
 }
 
-/* ---------------------------------- 발음듣기 영역 ---------------------------------- */
+/* ---------------------------------- Book 영역 ---------------------------------- */
+
+.page .content-image {
+    padding: 0;
+}
+
+.page .chapter-slide .content-image img {
+    width: 100%;
+}
+
+/* ---------------------------------- Pronunciation 영역 ---------------------------------- */
 
 .chapter-grid-container {
     padding: 0;

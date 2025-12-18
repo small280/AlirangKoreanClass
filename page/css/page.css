@@ -478,7 +478,7 @@
 
 /* 버튼 안의 이미지 크기 설정 */
 .play-audio-btn img {
-    width: 15px; /* 이미지 크기 조절 */
+    width: 20px; /* 이미지 크기 조절 */
     height: auto;
     display: block;
 
@@ -532,7 +532,6 @@
     padding-right: 40px;
 }
 
-/* 양 옆 배치 */
 .slide-nav-btn.prev {
     left: 0px; /* #pronunciation-area의 왼쪽 끝 */
 }
