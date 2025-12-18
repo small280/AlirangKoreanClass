@@ -11,7 +11,7 @@ header {
     transition: transform 1s ease-out;
     overflow: hidden;
 
-    z-index: 9997;
+    z-index: 99997;
 }
 
 .title {
