@@ -11,3 +11,31 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Nanum Gothic Light'; /* 사용할 폰트 이름 정의 */
+    src: url('/font/NanumGothicLight.woff2') format('woff2'); /* 폰트 파일 경로 지정 */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nanum Gothic Normal'; /* 사용할 폰트 이름 정의 */
+    src: url('/font/NanumGothicNormal.woff2') format('woff2'); /* 폰트 파일 경로 지정 */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nanum Gothic Bold'; /* 사용할 폰트 이름 정의 */
+    src: url('/font/NanumGothicBold.woff2') format('woff2'); /* 폰트 파일 경로 지정 */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nanum Gothic ExtraBold'; /* 사용할 폰트 이름 정의 */
+    src: url('/font/NanumGothicExtraBold.woff2') format('woff2'); /* 폰트 파일 경로 지정 */
+    font-weight: normal;
+    font-style: normal;
+}

@@ -237,13 +237,14 @@
     color: #000000;
 
     font-size: 250%;
+    font-family: nanum gothic bold, sans-serif;
 }
 
 .page .subMenu ul li a .eng {
     color: #000000;
 
     font-size: 150%;
-    font-weight: 300;
+    font-weight: 100;
 }
 
 .page .subMenu ul li .book::before, .page .subMenu ul li .pronunciation::before {
@@ -452,6 +453,7 @@
     color: black;
     font-size: 50px;
     font-weight: bold;
+    font-family: nanum gothic extrabold, sans-serif;
     /* border: 1px solid #ccc; */
 }
 

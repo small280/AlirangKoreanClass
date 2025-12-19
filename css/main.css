@@ -1,5 +1,6 @@
 *, *::before, *::after {
     box-sizing: border-box;
+    font-family: 'Nanum Gothic Normal', sans-serif;
 }
 
 html {
@@ -9,6 +10,7 @@ html {
 body {
     flex: 1;
     flex-direction: column; /* 전체 페이지를 세로로 정렬 */
+    
     min-height: 100vh; /* 뷰포트 높이만큼 최소 높이 설정 */
     margin: 0px auto;
 }
@@ -16,6 +18,14 @@ body {
 h1, h2, h3, nav, ul, li, span, a, p, img {
     margin: 0;
     padding: 0;
+}
+
+h1, .extraBold{
+    font-family: 'Nanum Gothic ExtraBold', sans-serif;
+}
+
+.bold {
+    font-family: 'Nanum Gothic Bold', sans-serif;
 }
 
 img, a, button, input {
