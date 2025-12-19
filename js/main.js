@@ -71,36 +71,36 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // };
 });
 
+
+//Footer 버전 정보 업데이트 함수
 async function updateFooterVersion() {
-    const owner = 'smal280';
-    const repo = 'AlirangKoreanClass';
-    const branch = 'AlirangKoreanClass'; // 브랜치명이 저장소명과 같다고 하신 부분
-    
-    // 브랜치명을 경로 끝에 정확히 삽입
-    const url = `api.github.com{owner}/${repo}/commits/${branch}`;
+    // 주소를 절대 자르지 말고 이 전체를 한 줄에 다 넣으세요.
+    const url = "api.github.com";
 
     try {
         const response = await fetch(url);
-        if (!response.ok) throw new Error('데이터를 불러올 수 없습니다.');
+        
+        if (!response.ok) {
+            throw new Error(`데이터 로드 실패: ${response.status}`);
+        }
 
         const data = await response.json();
         
-        // 커밋 메시지 (VS Code에서 입력한 내용)
-        const commitMessage = data.commit.message; 
-        // 커밋 날짜 (YYYY. MM. DD. 형식)
-        const commitDate = new Date(data.commit.author.date).toLocaleDateString();
+        // 깃허브 API는 최신 커밋 메시지를 'commit.message'에 담아줍니다.
+        const message = data.commit.message; 
+        const date = new Date(data.commit.author.date).toLocaleDateString();
 
-        const footerElement = document.getElementById('commit-info');
-        if (footerElement) {
-            // 푸터에 "버전: 커밋메시지 (날짜)" 형식으로 표시
-            footerElement.innerHTML = `버전: ${commitMessage} (${commitDate})`;
+        const display = document.getElementById('commit-info');
+        if (display) {
+            display.innerHTML = `버전: ${message} (${date})`;
         }
     } catch (error) {
-        console.error('버전 로드 실패:', error);
-        const footerElement = document.getElementById('commit-info');
-        if (footerElement) footerElement.innerText = '버전 정보 로드 실패';
+        console.error('Error:', error);
+        const display = document.getElementById('commit-info');
+        if (display) {
+            display.innerText = '버전 정보를 불러올 수 없습니다.';
+        }
     }
 }
 
-// 페이지 로드 시 실행
 document.addEventListener("DOMContentLoaded", updateFooterVersion);
