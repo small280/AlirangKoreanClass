@@ -75,27 +75,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
 //Footer 버전 정보 업데이트 함수
 async function updateFooterVersion() {
     // 주소를 절대 자르지 말고 이 전체를 한 줄에 다 넣으세요.
-    const url = "api.github.com";
+    const url = "https://api.github.com/repos/small280/AlirangKoreanClass/commits/main"; // 'main' 브랜치의 최신 커밋 정보
 
     try {
         const response = await fetch(url);
+        if (!response.ok) throw new Error(`데이터 로드 실패: ${response.status}`);
         
-        if (!response.ok) {
-            throw new Error(`데이터 로드 실패: ${response.status}`);
-        }
-
         const data = await response.json();
         
-        // 깃허브 API는 최신 커밋 메시지를 'commit.message'에 담아줍니다.
-        const message = data.commit.message; 
-        const date = new Date(data.commit.author.date).toLocaleDateString();
+        // 1. 날짜 객체 생성 (이 줄이 반드시 먼저 있어야 합니다)
+        const dateObj = new Date(data.commit.author.date);
+        
+        // 2. 날짜 가공 (25.12.19 형식)
+        const yy = String(dateObj.getFullYear()).slice(-2); // 연도 뒤 2자리
+        const mm = String(dateObj.getMonth() + 1).padStart(2, '0'); // 월 (01~12)
+        const dd = String(dateObj.getDate()).padStart(2, '0'); // 일 (01~31)
+        const formattedDate = `${yy}.${mm}.${dd}`;
 
+        // 3. 커밋 메시지 추출
+        const message = data.commit.message; 
+
+        // 4. HTML 요소에 출력
         const display = document.getElementById('commit-info');
         if (display) {
-            display.innerHTML = `버전: ${message} (${date})`;
+            display.innerHTML = `${message} (${formattedDate})`;
         }
     } catch (error) {
-        console.error('Error:', error);
+        console.error('버전 로드 에러:', error);
         const display = document.getElementById('commit-info');
         if (display) {
             display.innerText = '버전 정보를 불러올 수 없습니다.';
@@ -103,4 +109,5 @@ async function updateFooterVersion() {
     }
 }
 
+// 페이지 로드 시 실행
 document.addEventListener("DOMContentLoaded", updateFooterVersion);
