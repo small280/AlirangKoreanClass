@@ -70,3 +70,43 @@ document.addEventListener('DOMContentLoaded', (event) => {
     //     loadContent('/navigation.html');
     // };
 });
+
+async function syncLatestCommit(owner, repo) {
+    // 1. URL 구조 수정: https:// 추가 및 /repos/ 경로 명시
+    // 'main' 부분은 실제 사용 중인 브랜치명(main 또는 master)으로 설정하세요.
+    const url = `https://api.github.com/repos/${owner}/${repo}/commits/AlirangKoreanClass-main`; 
+
+    try {
+        const response = await fetch(url);
+        
+        // 응답 상태 확인
+        if (!response.ok) {
+            throw new Error(`HTTP 에러! 상태: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        const message = data.commit.message;
+        const date = new Date(data.commit.author.date).toLocaleDateString();
+        const sha = data.sha.substring(0, 7);
+
+        const displayElement = document.getElementById('commit-info');
+        if (displayElement) {
+            displayElement.innerHTML = `
+                최신 버전: <strong>${message}</strong> (${date}) 
+                <br>커밋 해시: <a href="${data.html_url}" target="_blank">${sha}</a>
+            `;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        const displayElement = document.getElementById('commit-info');
+        if (displayElement) {
+            displayElement.innerText = '업데이트 정보를 가져올 수 없습니다. (브랜치명이나 API 제한 확인)';
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 사용자 이름: smal280, 저장소 이름: AlirangKoreanClass
+    syncLatestCommit('smal280', 'AlirangKoreanClass');
+});
