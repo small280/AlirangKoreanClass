@@ -1,53 +1,55 @@
-fetch('/header.html') // Header 불러오기
-    .then(response => {
-        // 응답을 텍스트 형태로 변환합니다.
-        if (!response.ok) {
-            throw new Error('네트워크 응답이 올바르지 않습니다.');
+// 1. 공통 파일 로드 함수 (중복 제거)
+async function loadComponent(id, url, callback = null) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`${url} 로드 실패`);
+        
+        const html = await response.text();
+        const element = document.getElementById(id);
+        
+        if (element) {
+            element.innerHTML = html;
+            // 로드 완료 후 실행할 함수가 있다면 실행 (예: Footer 버전 업데이트)
+            if (callback) callback();
         }
-        return response.text();
-    })
-    .then(htmlContent => {
-        // 가져온 HTML 텍스트를 특정 div 요소의 innerHTML로 설정합니다.
-        document.getElementById('header-area').innerHTML = htmlContent;
-    })
-    .catch(error => {
-        // 오류 발생 시 콘솔에 메시지를 출력합니다.
-        console.error('HTML 파일을 불러오는 중 오류 발생:', error);
-        document.getElementById('header-area').innerHTML = '<p>콘텐츠를 불러오지 못했습니다.</p>';
-    });
+    } catch (error) {
+        console.error(error);
+        const element = document.getElementById(id);
+        if (element) element.innerHTML = '<p>콘텐츠를 불러오지 못했습니다.</p>';
+    }
+}
 
-fetch('/sidebar.html') // Sidebar 불러오기
-    .then(response => {
-        // 응답을 텍스트 형태로 변환합니다.
-        if (!response.ok) {
-            throw new Error('네트워크 응답이 올바르지 않습니다.');
-        }
-        return response.text();
-    })
-    .then(htmlContent => {
-        // 가져온 HTML 텍스트를 특정 div 요소의 innerHTML로 설정합니다.
-        document.getElementById('sidebar-area').innerHTML = htmlContent;
-    })
-    .catch(error => {
-        // 오류 발생 시 콘솔에 메시지를 출력합니다.
-        console.error('HTML 파일을 불러오는 중 오류 발생:', error);
-        document.getElementById('sidebar-area').innerHTML = '<p>콘텐츠를 불러오지 못했습니다.</p>';
-    });
+// 2. 깃허브 버전 동기화 함수
+async function updateFooterVersion() {
+    const display = document.getElementById('commit-info');
+    if (!display) return;
 
-fetch('/footer.html') // Footer 불러오기
-    .then(response => {
-        // 응답을 텍스트 형태로 변환합니다.
-        if (!response.ok) {
-            throw new Error('네트워크 응답이 올바르지 않습니다.');
-        }
-        return response.text();
-    })
-    .then(htmlContent => {
-        // 가져온 HTML 텍스트를 특정 div 요소의 innerHTML로 설정합니다.
-        document.getElementById('footer-area').innerHTML = htmlContent;
-    })
-    .catch(error => {
-        // 오류 발생 시 콘솔에 메시지를 출력합니다.
-        console.error('HTML 파일을 불러오는 중 오류 발생:', error);
-        document.getElementById('footer-area').innerHTML = '<p>콘텐츠를 불러오지 못했습니다.</p>';
-    });
+    // 계정명 smal280 인지 small280 인지 정확히 확인 후 사용하세요.
+    const url = "https://api.github.com/repos/small280/AlirangKoreanClass/commits/main";
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`API 에러: ${response.status}`);
+        
+        const data = await response.json();
+        const d = new Date(data.commit.author.date);
+        
+        // 25.12.19 형식 가공
+        const yy = String(d.getFullYear()).slice(-2);
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+
+        display.innerHTML = `${data.commit.message} (${yy}.${mm}.${dd})`;
+    } catch (error) {
+        console.error('버전 로드 에러:', error);
+        display.innerText = '버전 정보 로드 실패';
+    }
+}
+
+// 3. 페이지 로드 시 실행
+document.addEventListener("DOMContentLoaded", () => {
+    loadComponent('header-area', '/header.html');
+    loadComponent('sidebar-area', '/sidebar.html');
+    // Footer 로드 완료 후에만 버전 업데이트 실행하도록 콜백 전달
+    loadComponent('footer-area', '/footer.html', updateFooterVersion);
+});

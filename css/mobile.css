@@ -376,6 +376,10 @@ input[type="checkbox"]:checked ~ .sidebar {
     }
 }
 
+.word-text {
+    font-family: 'Nanum Gothic Bold', sans-serif;
+}
+
 /* ---------------------------------- Footer 영역 ---------------------------------- */
 
 
