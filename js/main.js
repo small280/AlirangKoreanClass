@@ -71,42 +71,36 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // };
 });
 
-async function syncLatestCommit(owner, repo) {
-    // 1. URL 구조 수정: https:// 추가 및 /repos/ 경로 명시
-    // 'main' 부분은 실제 사용 중인 브랜치명(main 또는 master)으로 설정하세요.
-    const url = `https://api.github.com/repos/${owner}/${repo}/commits/AlirangKoreanClass-main`; 
+async function updateFooterVersion() {
+    const owner = 'smal280';
+    const repo = 'AlirangKoreanClass';
+    const branch = 'AlirangKoreanClass'; // 브랜치명이 저장소명과 같다고 하신 부분
+    
+    // 브랜치명을 경로 끝에 정확히 삽입
+    const url = `api.github.com{owner}/${repo}/commits/${branch}`;
 
     try {
         const response = await fetch(url);
-        
-        // 응답 상태 확인
-        if (!response.ok) {
-            throw new Error(`HTTP 에러! 상태: ${response.status}`);
-        }
+        if (!response.ok) throw new Error('데이터를 불러올 수 없습니다.');
 
         const data = await response.json();
         
-        const message = data.commit.message;
-        const date = new Date(data.commit.author.date).toLocaleDateString();
-        const sha = data.sha.substring(0, 7);
+        // 커밋 메시지 (VS Code에서 입력한 내용)
+        const commitMessage = data.commit.message; 
+        // 커밋 날짜 (YYYY. MM. DD. 형식)
+        const commitDate = new Date(data.commit.author.date).toLocaleDateString();
 
-        const displayElement = document.getElementById('commit-info');
-        if (displayElement) {
-            displayElement.innerHTML = `
-                최신 버전: <strong>${message}</strong> (${date}) 
-                <br>커밋 해시: <a href="${data.html_url}" target="_blank">${sha}</a>
-            `;
+        const footerElement = document.getElementById('commit-info');
+        if (footerElement) {
+            // 푸터에 "버전: 커밋메시지 (날짜)" 형식으로 표시
+            footerElement.innerHTML = `버전: ${commitMessage} (${commitDate})`;
         }
     } catch (error) {
-        console.error('Error:', error);
-        const displayElement = document.getElementById('commit-info');
-        if (displayElement) {
-            displayElement.innerText = '업데이트 정보를 가져올 수 없습니다. (브랜치명이나 API 제한 확인)';
-        }
+        console.error('버전 로드 실패:', error);
+        const footerElement = document.getElementById('commit-info');
+        if (footerElement) footerElement.innerText = '버전 정보 로드 실패';
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    // 사용자 이름: smal280, 저장소 이름: AlirangKoreanClass
-    syncLatestCommit('smal280', 'AlirangKoreanClass');
-});
+// 페이지 로드 시 실행
+document.addEventListener("DOMContentLoaded", updateFooterVersion);
