@@ -19,37 +19,38 @@ async function loadComponent(id, url, callback = null) {
     }
 }
 
-// 2. 깃허브 버전 동기화 함수
+// 2. 깃허브 버전 동기화 + 방문 카운터 함수 통합
 async function updateFooterVersion() {
     const display = document.getElementById('commit-info');
-    if (!display) return;
 
-    // 계정명 smal280 인지 small280 인지 정확히 확인 후 사용하세요.
-    const url = "https://api.github.com/repos/small280/AlirangKoreanClass/commits/main";
+    // 1. GitHub API 데이터 가져오기 (커밋 정보)
+    const repoUrl = "https://api.github.com/repos/small280/AlirangKoreanClass/commits/main";
 
     try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`API 에러: ${response.status}`);
+        const response = await fetch(repoUrl);
         
-        const data = await response.json();
-        const d = new Date(data.commit.author.date);
-        
-        // 25.12.19 형식 가공
-        const yy = String(d.getFullYear()).slice(-2);
-        const mm = String(d.getMonth() + 1).padStart(2, '0');
-        const dd = String(d.getDate()).padStart(2, '0');
-
-        display.innerHTML = `${data.commit.message} (${yy}.${mm}.${dd})`;
+        if (response.status === 403) {
+            // API 제한 시 오늘 날짜 표시
+            const now = new Date();
+            const dateStr = `${String(now.getFullYear()).slice(-2)}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`;
+            if (display) display.innerHTML = `최신 업데이트 (${dateStr})`;
+        } else if (response.ok) {
+            const data = await response.json();
+            const d = new Date(data.commit.author.date);
+            const yy = String(d.getFullYear()).slice(-2);
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
+            if (display) display.innerHTML = `${data.commit.message} (${yy}.${mm}.${dd})`;
+        }
     } catch (error) {
         console.error('버전 로드 에러:', error);
-        display.innerText = '버전 정보 로드 실패';
+        if (display) display.innerText = '버전 정보 로드 실패';
     }
 }
 
-// 3. 페이지 로드 시 실행
+// 3. 페이지 로드 시 실행 (기존 코드 유지)
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent('header-area', '/header.html');
     loadComponent('sidebar-area', '/sidebar.html');
-    // Footer 로드 완료 후에만 버전 업데이트 실행하도록 콜백 전달
     loadComponent('footer-area', '/footer.html', updateFooterVersion);
 });

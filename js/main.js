@@ -32,22 +32,6 @@ async function loadPage(pageKey) {
     });
 }
 
-// 4. 깃허브 버전 업데이트 (25.12.19 형식)
-async function updateVersion() {
-    const display = document.getElementById('commit-info');
-    if (!display) return;
-    
-    try {
-        const res = await fetch("https://api.github.com/repos/small280/AlirangKoreanClass/commits/main");
-        const data = await res.json();
-        const d = new Date(data.commit.author.date);
-        const dateStr = `${String(d.getFullYear()).slice(-2)}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
-        display.innerHTML = `${data.commit.message} (${dateStr})`;
-    } catch (e) {
-        display.innerText = "버전 정보 로드 실패";
-    }
-}
-
 // 5. 눈 내리는 효과 (최적화 버전)
 function initSnowEffect() {
     const container = document.querySelector('.snow-container');
@@ -69,7 +53,7 @@ function initSnowEffect() {
 document.addEventListener("DOMContentLoaded", () => {
     fetchTo('/header.html', 'header-area');
     fetchTo('/sidebar.html', 'sidebar-area');
-    fetchTo('/footer.html', 'footer-area', updateVersion); // 푸터 로드 후 버전 실행
+    // fetchTo('/footer.html', 'footer-area', updateVersion); // 푸터 로드 후 버전 실행
     loadPage('index'); // 초기 콘텐츠 로드
 });
 
