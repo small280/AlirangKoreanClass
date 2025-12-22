@@ -405,9 +405,9 @@ footer .contact ul li a, .sns-area span {
 
     footer .contact ul {
         width: calc(50%);
-        
         text-align: left;
         margin-bottom: 5%;
+        
     }
 
     footer .contact ul li {
@@ -426,17 +426,24 @@ footer .contact ul li a, .sns-area span {
     footer .contact {
         padding: 30px 20px;
     }
+    
+    /* Copyright 영역 */
+    footer .copyright ul {
+        flex-direction: column;
+        padding: 0;
+    }
 
-}
+    footer .copyright ul li {
+        margin: 5px 0;
+    }   
 
+    footer .copyright {
+        padding: 10px 0;
+    }
 
-/* Copyright 영역 */
-footer .copyright {
-    padding: 10px 0;
-}
-
-footer .copyright .copyright-text {
-    border: none;
+        footer .copyright .copyright-text, footer .copyright .version{
+        border: none;
+    }
 }
 
 }
