@@ -379,6 +379,11 @@ async function fetchAndDisplayData(filename, type) {
                                 
                                     const itemBox = document.createElement('div');
                                     itemBox.classList.add('pron-item-box');
+
+                                    // 오디오 미사용 아이템 스타일링
+                                    if (item.useAudio === false) {
+                                        itemBox.classList.add('no-audio'); // CSS에서 .no-audio { background-color: #ccc; } 정의 필요
+                                    }
                                 
                                     // 줄바꿈 클래스 주입 로직
                                     if (mobileEmptyAllowed && globalItemCount === nextBreakPoint) {
@@ -392,19 +397,39 @@ async function fetchAndDisplayData(filename, type) {
                                     wordText.classList.add('word-text');
                                     itemBox.appendChild(wordText);
                                 
+                                    // [수정] 버튼은 일단 무조건 생성 (레이아웃 유지 목적)
                                     const playButton = document.createElement('button');
                                     playButton.classList.add('play-audio-btn');
                                     const imgIcon = document.createElement('img');
                                     imgIcon.src = '/img/icon/audio.png';
                                     playButton.appendChild(imgIcon);
                                     itemBox.appendChild(playButton);
-                                
-                                    playButton.addEventListener('click', () => {
-                                        if (audioPlayer) {
-                                            audioPlayer.src = item.audio;
-                                            audioPlayer.play().catch(e => console.error(e));
-                                        }
-                                    });
+
+                                    // --- [핵심 로직] useAudio 값에 따른 처리 ---
+                                    if (item.useAudio === false) {
+                                        // 1. 박스 배경색 변경
+                                        itemBox.classList.add('no-audio');
+
+                                        // 2. 툴팁 및 설명 추가
+                                        const noticeText = "⚠ This character is unused. Audio is not supported. ⚠";
+                                        playButton.title = noticeText;  // 마우스를 올리면 뜨는 툴팁 (표준 방식)
+                                        imgIcon.alt = noticeText;       // 이미지 대체 텍스트
+
+                                                                        // 클릭 시 동작 방지 (혹은 안내창 띄우기)
+                                        playButton.addEventListener('click', (e) => {
+                                            e.preventDefault();
+                                            alert(noticeText); // 필요 시 알림창을 띄울 수도 있습니다.
+                                        });
+                                    } else {
+                                        // 3. 사용 가능한 경우에만 클릭 이벤트 등록
+                                        playButton.addEventListener('click', () => {
+                                            if (audioPlayer) {
+                                                audioPlayer.src = item.audio;
+                                                audioPlayer.play().catch(e => console.error(e));
+                                            }
+                                        });
+                                    }
+
                                     // 현재 챕터 컨테이너에 아이템 추가 (정상 참조)
                                     chapterGridContainer.appendChild(itemBox);
                                 });

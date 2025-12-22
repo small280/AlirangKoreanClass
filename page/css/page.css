@@ -457,11 +457,32 @@
     /* border: 1px solid #ccc; */
 }
 
+/* 오디오 없는 박스 배경색 */
+.pron-item-box.no-audio {
+    background-color: #e1e1e1 !important; /* 회색 배경 */
+    border: 1px solid rgb(167, 167, 167);
+}
+
+.pron-item-box.no-audio .play-audio-btn {
+    background-color: rgb(167, 167, 167); /* 버튼도 회색으로 변경 */
+    border: none;
+    cursor: help; /* 마우스 커서 기본으로 변경 */
+    pointer-events: auto; /* 클릭 이벤트 완전 차단 */
+}
+
+.pron-item-box.no-audio .play-audio-btn img {
+    opacity: 0.6; /* 이미지도 반투명하게 */
+}
+
+.has-tooltip p {
+    color: red;
+}
+
 .play-audio-btn {
     width: 100%;
     height: 30px;
 
-    border: 1px solid #fac963;
+    border: none;
     cursor: pointer; /* 마우스 오버 시 손가락 모양 */
     padding: 5px;
     margin: 0px;
@@ -473,7 +494,7 @@
 
 @media (hover: hover) {
     .play-audio-btn:hover {
-        border: 1px solid #2f8f7a;
+        /* border: 1px solid #2f8f7a; */
         background-color: #2f8f7a; /* 호버 효과 */
     }
 }

@@ -1,0 +1,10 @@
+{
+    "level": "6",
+    "title": "한글 자음 겹받침",
+    "subtitle": "Double Final sound of Consonant in Korean",
+
+    "book": [
+        "/page/hangul/img/level06/001.png",
+        "/page/hangul/img/level06/002.png"
+    ]
+}
