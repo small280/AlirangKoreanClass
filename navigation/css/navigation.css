@@ -75,9 +75,6 @@
     padding: 30px 20px 80px 20px;
     gap: 30px;
     box-sizing: border-box; /* 패딩이 너비를 넘지 않도록 함 */
-
-    position: relative;
-    z-index: 9999;
 }   
 .navigation nav {
     display: flex;

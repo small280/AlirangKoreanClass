@@ -92,6 +92,7 @@ function initSnowEffect() {
         container.appendChild(snowflake);
     }
 }
+
 document.addEventListener("DOMContentLoaded", async () => {
     // 1. 공통 레이아웃을 모두 로드할 때까지 기다립니다.
     await Promise.all([
@@ -107,6 +108,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     loadPage(initialPage, false); 
 });
 
+// 7. 전역 내비게이션 함수
+window.goToPage = (key) => loadPage(key);
+
 //사이드바 닫는 함수
 window.closeSidebar = function() {
     const menuToggle = document.getElementById('menu-toggle');
@@ -115,7 +119,9 @@ window.closeSidebar = function() {
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
         const isMobile = window.innerWidth <= 1024;
-        sidebar.style.pointerEvents = "none";
+        const duration = isMobile ? 200 : 500; // CSS transition 시간과 일치시킴
+
+        sidebar.style.pointerEvents = "none"; 
         
         if (isMobile) {
             sidebar.style.transform = "translateX(100%)";
@@ -124,11 +130,10 @@ window.closeSidebar = function() {
         }
 
         setTimeout(() => {
+            // 애니메이션이 완전히 끝난 후 초기화
             sidebar.style.transform = "";
             sidebar.style.pointerEvents = "";
-        }, 200);
+            console.log("사이드바 닫기 완료");
+        }, duration); 
     }
 };
-
-// 7. 전역 내비게이션 함수
-window.goToPage = (key) => loadPage(key);

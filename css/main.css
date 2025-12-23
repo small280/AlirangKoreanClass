@@ -347,6 +347,7 @@ img, a, button, input {
     left: 0;
     width: 100vw;
     height: 100vh; /* << 컨테이너 높이 지정 필수 */
+    pointer-events: none;
 }
 
 /* 개별 눈송이 스타일 */

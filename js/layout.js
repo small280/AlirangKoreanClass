@@ -48,9 +48,28 @@ async function updateFooterVersion() {
     }
 }
 
-// 3. 페이지 로드 시 실행 (기존 코드 유지)
+// 1. 카운터 초기화 함수 정의 (전역 혹은 layout.js 내부)
+function initHitCounter() {
+    const hitItem = document.getElementById('hit-counter-item');
+    if (!hitItem) return;
+
+    hitItem.innerHTML = `
+        <a href="https://myhits.vercel.app" target="_blank">
+          <img src="https://myhits.vercel.app/api/hit/https%3A%2F%2Falirangkoreanclass?color=gray&label=counts&size=small" alt="counts" />
+        </a>`;
+}
+
+// 2. 푸터 로드 시 실행될 통합 콜백 함수
+function onFooterLoaded() {
+    updateFooterVersion(); // 기존 버전 정보 업데이트
+    initHitCounter();      // [추가] 히트 카운터 초기화
+}
+
+// 3. 페이지 로드 시 실행 (순서 고정)
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent('header-area', '/header.html');
     loadComponent('sidebar-area', '/sidebar.html');
-    loadComponent('footer-area', '/footer.html', updateFooterVersion);
+    
+    // 푸터 로드 후 버전 업데이트와 카운터를 한꺼번에 실행
+    loadComponent('footer-area', '/footer.html', onFooterLoaded);
 });

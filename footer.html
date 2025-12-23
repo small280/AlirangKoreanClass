@@ -59,26 +59,9 @@
         <li class="copyright-text"><a href="#">Copyright © 2025 Alirang Korean Class</a></li>
         <!-- <li class="version">v0.1.4</li> -->
         <li class="version"><small id="commit-info">버전 불러오는 중...</small></li>
-        <li id="hit-counter-item">
-            <!-- <a href="https://myhits.vercel.app"><img src="https://myhits.vercel.app/api/hit/https%3A%2F%2Falirangkoreanclass?color=gray&label=counts&size=small" alt="counts" /></a> -->
+        <li id="hit-counter-item" class="count">
+            <!-- <a href="https://myhits.vercel.app"><img src="https://myhits.vercel.app/api/hit/https%3A%2F%2Falirangkoreanclass?color=gray&label=count&size=small" alt="count" /></a> -->
         </li>
     </ul>
 </div>
 <div class="gradient"></div>
-
-<script>
-  (function() {
-    // 1. 현재 접속한 호스트네임을 확인합니다.
-    var hostname = window.location.hostname;
-    
-    // 2. 로컬 접속(localhost, 127.0.0.1)이 아닐 때만 실행합니다.
-    if (hostname !== "localhost" && hostname !== "127.0.0.1") {
-      var hitItem = document.getElementById('hit-counter-item');
-      // 3. 배포된 도메인일 때만 이미지 HTML을 삽입합니다.
-      hitItem.innerHTML = `
-        <a href="https://myhits.vercel.app" target="_blank">
-          <img src="https://myhits.vercel.app/api/hit/https%3A%2F%2Falirangkoreanclass?color=gray&label=counts&size=small" alt="counts" />
-        </a>`;
-    }
-  })();
-</script>

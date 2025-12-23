@@ -545,19 +545,24 @@ function goToPronunciation() {
 }
 
 function goToSubMenu(filename) {
-    // 1. 데이터 저장 로직
+    // 1. 데이터 저장 (가장 먼저 실행)
     sessionStorage.setItem('selectedData', JSON.stringify({ filename: filename, type: 'subMenu' }));
     sessionStorage.setItem('lastFilename', filename);
 
-    // [추가] 사이드바 닫기 함수 호출
-    if (typeof closeSidebar === 'function') {
-        closeSidebar();
+    // 2. 사이드바 닫기 (main.js에 등록된 전역 함수 호출)
+    if (typeof window.closeSidebar === 'function') {
+        window.closeSidebar();
     }
 
-    // 2. SPA 로드 및 스크롤 상단 이동
+    // 3. SPA 로드 함수 호출
     if (typeof loadPage === 'function') {
-        loadPage('page');
+        loadPage('page'); 
+    } else {
+        // 최후의 수단: 메인 페이지로 강제 해시 이동
+        window.location.href = '/#page';
     }
+
+    // 4. 스크롤 최상단 초기화
     window.scrollTo(0, 0);
 }
 

@@ -151,12 +151,12 @@ footer .copyright .copyright-text a {
     font-weight: 300;
 }
 
-footer .copyright .version {
-    border-right: 1px solid gray;
-}
-
 footer .copyright .version small{
     color: gray;
     font-size: 14px;
     font-weight: 300;
+}
+
+footer .copyright .count {
+    border-right: 1px solid gray;
 }
