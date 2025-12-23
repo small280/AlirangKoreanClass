@@ -695,7 +695,7 @@
                 {"category": "둗", "audio": "/page/hangul/audio/level01/나.mp3", "useAudio": false},
                 {"category": "둘", "audio": "/page/hangul/audio/level01/나.mp3"},
                 {"category": "둠", "audio": "/page/hangul/audio/level01/나.mp3"},
-                {"category": "둡", "audio": "/page/hangul/audio/level01/나.mp3"},
+                {"category": "둡", "audio": "/page/hangul/audio/level01/나.mp3", "useAudio": false},
                 {"category": "둥", "audio": "/page/hangul/audio/level01/나.mp3"},
                 {"category": "룩", "audio": "/page/hangul/audio/level01/가.mp3"},
                 {"category": "룬", "audio": "/page/hangul/audio/level01/나.mp3"},
