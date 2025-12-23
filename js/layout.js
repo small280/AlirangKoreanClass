@@ -52,5 +52,5 @@ async function updateFooterVersion() {
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent('header-area', '/header.html');
     loadComponent('sidebar-area', '/sidebar.html');
-    // loadComponent('footer-area', '/footer.html', updateFooterVersion);
+    loadComponent('footer-area', '/footer.html', updateFooterVersion);
 });
