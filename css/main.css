@@ -13,6 +13,12 @@ body {
     
     min-height: 100vh; /* 뷰포트 높이만큼 최소 높이 설정 */
     margin: 0px auto;
+
+    /* 페이지 전체 드래그 금지 */
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* 표준 */
 }
 
 h1, h2, h3, nav, ul, li, span, a, p, img {
