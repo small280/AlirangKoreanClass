@@ -35,20 +35,22 @@ async function loadPage(pageKey) {
 // 5. 눈 내리는 효과 (최적화 버전)
 function initSnowEffect() {
     const container = document.querySelector('.snow-container');
-    if (!container || container.children.length > 0) return; // 중복 생성 방지
+    if (!container || container.children.length > 0) return;
 
     for (let i = 0; i < 100; i++) {
-        const snowflake = document.createElement('div');
+        const snowflake = document.createElement('div'); // 반드시 const 또는 let 확인
         snowflake.className = 'snowflake';
         snowflake.innerHTML = '❄';
         snowflake.style.left = Math.random() * 100 + '%';
         snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+        
+        // 에러 지점: 아래 변수명이 위에서 선언한 snowflake와 일치하는지 확인
+        snowflake.style.animationName = 'combinedFallSway'; 
         snowflake.style.animationDuration = Math.random() * 10 + 5 + 's';
         snowflake.style.opacity = Math.random();
         container.appendChild(snowflake);
     }
 }
-
 // 6. 초기 구동
 document.addEventListener("DOMContentLoaded", () => {
     fetchTo('/header.html', 'header-area');

@@ -346,15 +346,15 @@ img, a, button, input {
 /* 개별 눈송이 스타일 */
 .snowflake {
     position: absolute;
+    top: -50px; /* 화면 위쪽 바깥에서 시작 */
     color: #fff;
     pointer-events: none;
     user-select: none;
     opacity: 0.8;
-    /* animation-name은 JS에서 설정하므로 여기서는 제거합니다. */
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-
-    z-index: 0;
+    z-index: 9999; /* 다른 요소보다 위에 보이게 함 */
+    text-shadow: 0 0 5px rgba(0,0,0,0.1); /* 밝은 배경에서도 보이게 설정 */
 }
 
 
