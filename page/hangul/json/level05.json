@@ -576,7 +576,7 @@
             "words": [
                 {"category": "꽉", "audio": "/page/hangul/audio/level01/가.mp3"},
                 {"category": "꽌", "audio": "/page/hangul/audio/level01/나.mp3"},
-                {"category": "꽏", "audio": "/page/hangul/audio/level01/다.mp3"},
+                {"category": "꽏", "audio": "/page/hangul/audio/level01/다.mp3", "useAudio": false},
                 {"category": "꽐", "audio": "/page/hangul/audio/level01/나.mp3"},
                 {"category": "꽘", "audio": "/page/hangul/audio/level01/나.mp3"},
                 {"category": "꽙", "audio": "/page/hangul/audio/level01/나.mp3"},
