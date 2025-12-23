@@ -48,28 +48,41 @@ async function updateFooterVersion() {
     }
 }
 
-// 1. 카운터 초기화 함수 정의 (전역 혹은 layout.js 내부)
+async function loadComponent(targetId, url, callback) {
+    try {
+        const res = await fetch(url);
+        const html = await res.text();
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.innerHTML = html; // 1. HTML을 먼저 넣고
+            if (callback) callback(); // 2. 그 다음 콜백(카운터 실행) 호출
+        }
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 function initHitCounter() {
     const hitItem = document.getElementById('hit-counter-item');
-    if (!hitItem) return;
-
-    hitItem.innerHTML = `
-        <a href="https://myhits.vercel.app" target="_blank">
-          <img src="https://myhits.vercel.app/api/hit/https%3A%2F%2Falirangkoreanclass?color=gray&label=counts&size=small" alt="counts" />
-        </a>`;
-}
-
-// 2. 푸터 로드 시 실행될 통합 콜백 함수
-function onFooterLoaded() {
-    updateFooterVersion(); // 기존 버전 정보 업데이트
-    initHitCounter();      // [추가] 히트 카운터 초기화
-}
-
-// 3. 페이지 로드 시 실행 (순서 고정)
-document.addEventListener("DOMContentLoaded", () => {
-    loadComponent('header-area', '/header.html');
-    loadComponent('sidebar-area', '/sidebar.html');
+    if (!hitItem) {
+        console.warn("히트 카운터 아이템을 찾을 수 없습니다.");
+        return;
+    }
     
-    // 푸터 로드 후 버전 업데이트와 카운터를 한꺼번에 실행
-    loadComponent('footer-area', '/footer.html', onFooterLoaded);
+    // 1. 도메인 주소 설정
+    const siteUrl = encodeURIComponent("https://alirangkoreanclass.com"); 
+    
+    // 2. [수정] src 주소에 https:// 추가 및 ${siteUrl} 템플릿 리터럴 문법 확인
+    hitItem.innerHTML = `
+    <a href="https://myhits.vercel.app" target="_blank">
+      <img src="myhits.vercel.app{siteUrl}?color=gray&label=counts&size=small" alt="counts" />
+    </a>`;
+}
+
+// 초기화 순서
+document.addEventListener("DOMContentLoaded", () => {
+    loadComponent('footer-area', '/footer.html', () => {
+        if (typeof updateFooterVersion === 'function') updateFooterVersion();
+        initHitCounter(); // 반드시 콜백 안에서 실행
+    });
 });
