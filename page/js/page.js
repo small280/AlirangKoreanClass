@@ -474,92 +474,98 @@ async function fetchAndDisplayData(filename, type) {
     }
 }
 
-function goToSubMenu(filename) { //서브메뉴 불러오기
-    console.log("버튼이 클릭되었습니다. 비동기 함수 호출 시작.");
+// [수정] 외부(main.js)에서 명시적으로 호출할 수 있도록 async 함수로 확정
+async function initPageContent() {
 
-    const fileNameToLoad = filename;
-    sessionStorage.setItem('lastFilename', fileNameToLoad);
-    fetchAndDisplayData(fileNameToLoad, 'subMenu');
-
-    const dataToStore = {
-        filename: fileNameToLoad,
-        type: 'subMenu'
-    };
-    // 객체를 JSON 문자열로 변환하여 저장
-    sessionStorage.setItem('selectedData', JSON.stringify(dataToStore));
-    // 다음 페이지로 이동
-    window.location.href = '/page/page.html';
-}
-
-function goToBook() { //한글교재 불러오기
-    console.log("버튼이 클릭되었습니다. 비동기 함수 호출 시작.");
-
-    const rememberedFilename = sessionStorage.getItem('lastFilename');
-
-    // fetchAndDisplayData 함수를 호출하면서 원하는 파일 이름을 인자로 전달합니다.
-    const dataToStore = {
-        filename: rememberedFilename,
-        type: 'book'
-    };
-    sessionStorage.setItem('selectedData', JSON.stringify(dataToStore));
-    window.location.href = '/page/page.html'; 
-}
-
-function goToPronunciation() { //발음듣기 불러오기
-    console.log("버튼이 클릭되었습니다. 비동기 함수 호출 시작.");
-
-    const rememberedFilename = sessionStorage.getItem('lastFilename');
-
-    // fetchAndDisplayData 함수를 호출하면서 원하는 파일 이름을 인자로 전달합니다.
-    const dataToStore = {
-        filename: rememberedFilename,
-        type: 'pronunciation'
-    };
-    sessionStorage.setItem('selectedData', JSON.stringify(dataToStore));
-    window.location.href = '/page/page.html'; 
-}
-
-//html 적용
-document.addEventListener('DOMContentLoaded', () => {
-    //const rememberedFilename = sessionStorage.getItem('lastFilename');
-    if (window.location.pathname.includes('/page/page.html')) {
-        
-        // sessionStorage에서 'selectedData' 문자열 가져오기
-        const storedDataString = sessionStorage.getItem('selectedData');
-
-        if (storedDataString) {
-            try {
-                const dataObject = JSON.parse(storedDataString);
-                
-                // filename과 type이 유효한지 확인 후 호출
-                if (dataObject && dataObject.filename && dataObject.type) {
-                    fetchAndDisplayData(dataObject.filename, dataObject.type);
-                    
-                    // 데이터를 성공적으로 넘겼다면 sessionStorage에서 제거
-                    // sessionStorage.removeItem('selectedData'); 
-                } else {
-                    handleError('sessionStorage에 유효한 filename 또는 type이 없습니다.');
-                }
-
-            } catch (error) {
-                // JSON 파싱 오류 처리
-                console.error("JSON 파싱 오류:", error);
-                handleError('저장된 데이터 형식에 오류가 있습니다.');
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // 부드럽게 올리고 싶을 때
+    
+    // console.log("페이지 데이터 로드 시작");
+    const storedDataString = sessionStorage.getItem('selectedData');
+    
+    if (storedDataString) {
+        try {
+            const dataObject = JSON.parse(storedDataString);
+            if (dataObject.filename && dataObject.type) {
+                // 데이터 표시 함수가 완료될 때까지 대기
+                await fetchAndDisplayData(dataObject.filename, dataObject.type);
+            } else {
+                handleError('sessionStorage에 유효한 정보가 없습니다.');
             }
-
-        } else {
-            handleError('선택된 메뉴 정보가 없습니다.');
+        } catch (e) {
+            console.error("데이터 파싱 실패:", e);
+            handleError('저장된 데이터 형식에 오류가 있습니다.');
         }
+    } else {
+        // 직접 주소창에 /page/page.html을 치고 들어왔을 때 등 예외 처리
+        handleError('선택된 메뉴 정보가 없습니다.');
+    }
+}
+
+// [수정] DOMContentLoaded 리스너: SPA 환경에서는 pathname이 index.html인 경우가 많으므로 조건 완화
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. 실제 파일 경로가 page.html이거나 
+    // 2. SPA 방식으로 #page 해시를 가지고 있을 때 실행
+    if (window.location.pathname.includes('/page/page.html') || window.location.hash.includes('#page')) {
+        initPageContent();
     }
 });
 
+// 한글교재 불러오기
+function goToBook() {
+    const rememberedFilename = sessionStorage.getItem('lastFilename');
+    if (!rememberedFilename) return;
+
+    const dataToStore = { filename: rememberedFilename, type: 'book' };
+    sessionStorage.setItem('selectedData', JSON.stringify(dataToStore));
+
+    // [수정] 이미 page라면 loadPage를 다시 하지 않고 데이터만 갱신
+    if (window.location.hash.includes('#page')) {
+        initPageContent(); // 즉시 화면 갱신
+        // 히스토리에도 'book' 상태임을 기록 (뒤로가기용)
+        history.pushState({ key: 'page', data: JSON.stringify(dataToStore) }, '', `#page_${Date.now()}`);
+    } else {
+        loadPage('page');
+    }
+}
+
+// 발음듣기 불러오기
+function goToPronunciation() {
+    const rememberedFilename = sessionStorage.getItem('lastFilename');
+    if (!rememberedFilename) return;
+
+    const dataToStore = { filename: rememberedFilename, type: 'pronunciation' };
+    sessionStorage.setItem('selectedData', JSON.stringify(dataToStore));
+
+    if (window.location.hash.includes('#page')) {
+        initPageContent();
+        history.pushState({ key: 'page', data: JSON.stringify(dataToStore) }, '', `#page_${Date.now()}`);
+    } else {
+        loadPage('page');
+    }
+}
+
+function goToSubMenu(filename) {
+    // 1. 데이터 저장 로직
+    sessionStorage.setItem('selectedData', JSON.stringify({ filename: filename, type: 'subMenu' }));
+    sessionStorage.setItem('lastFilename', filename);
+
+    // [추가] 사이드바 닫기 함수 호출
+    if (typeof closeSidebar === 'function') {
+        closeSidebar();
+    }
+
+    // 2. SPA 로드 및 스크롤 상단 이동
+    if (typeof loadPage === 'function') {
+        loadPage('page');
+    }
+    window.scrollTo(0, 0);
+}
+
 function handleError(message) {
     console.error(message);
+    // [중요] 렌더링 직후 요소를 못 찾을 수 있으므로 재시도 로직이나 null 체크 강화
     const contentArea = document.getElementById('page-contents-area');
     if (contentArea) {
         contentArea.textContent = message;
-    } else {
-        // 오류가 났던 요소가 'content-area'였다면 이 부분에서 문제가 발생했을 것입니다.
-        console.error("오류: 'page-contents-area' ID를 가진 요소를 찾을 수 없습니다!");
     }
 }

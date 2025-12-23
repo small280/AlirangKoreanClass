@@ -31,7 +31,6 @@
     }
 }
 
-
 .bar {
     display: block;
     width: 20px;
@@ -77,27 +76,34 @@ input[type="checkbox"]:checked ~ .hamburger-menu .bar3 {
 
 /* 데스크톱 영역 */
 @media screen and (min-width: 1025px) {
+    /* 1. 체크되었을 때: 확실하게 화면에 고정 */
     input[type="checkbox"]:checked ~ .sidebar {
-        transform: translateY(70px);
-        transition: all 0.5s ease-in;
+        transform: translateY(70px) !important; /* 우선순위 부여 */
+        transition: transform 0.5s ease-in;
     }
 
-    .hamburger-menu:hover ~ .sidebar {
-        transform: translateY(70px);
-        transition: all 0.5s ease-in;
-    }
-
-    .sidebar {
-        width: 25%;
-        top: 0px;
-        right: 50px;
-        transform: translateY(-100%);
-        transition: all 0.5s ease-out;
-    }
+    /* 2. 마우스를 올렸을 때 (선택 사항: 체크 안 된 상태에서도 보여줄지 결정) */
+    /* 만약 체크했을 때만 보여주고 싶다면 아래 :hover ~ .sidebar 부분은 지우는 게 좋습니다. */
+    .hamburger-menu:hover ~ .sidebar,
     .sidebar:hover {
         transform: translateY(70px);
-        transition: all 0.5s ease-in;
-    } 
+        transition: transform 0.5s ease-in;
+    }
+
+    /* 3. 기본 상태: 위로 확실히 숨김 */
+    .sidebar {
+        position: fixed;
+        top: 0; 
+        right: 50px;
+        transform: translateY(-100%); 
+        transition: transform 0.5s ease-out; /* 닫힐 때 애니메이션 */
+        z-index: 99996;
+        width: 30%;
+        height: 100vh;
+        background-color: white;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
 }
 
 

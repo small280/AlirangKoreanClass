@@ -34,21 +34,53 @@
             ]
         },
         {
-            "chapterTitle" : "Chapter 2. ㅏ - ㅣ",
+            "chapterTitle" : "Chapter 2. ㄲ - ㅉ",
             "itemsPerRow": 10,
             "itemsPerRowMobile": 5,
             "MobileEmpty": false,
             "words": [
-                {"category": "ㅏ", "audio": "/page/hangul/audio/level01/chapter02/아.mp3"},
-                {"category": "ㅑ", "audio": "/page/hangul/audio/level01/chapter02/야.mp3"},
-                {"category": "ㅓ", "audio": "/page/hangul/audio/level01/chapter02/어.mp3"},
-                {"category": "ㅕ", "audio": "/page/hangul/audio/level01/chapter02/여.mp3"},
-                {"category": "ㅗ", "audio": "/page/hangul/audio/level01/chapter02/오.mp3"},
-                {"category": "ㅛ", "audio": "/page/hangul/audio/level01/chapter02/요.mp3"},
-                {"category": "ㅜ", "audio": "/page/hangul/audio/level01/chapter02/우.mp3"},
-                {"category": "ㅠ", "audio": "/page/hangul/audio/level01/chapter02/유.mp3"},
-                {"category": "ㅡ", "audio": "/page/hangul/audio/level01/chapter02/으.mp3"},
-                {"category": "ㅣ", "audio": "/page/hangul/audio/level01/chapter02/이.mp3"}
+                {"category": "ㄲ", "audio": "/page/hangul/audio/level01/chapter02/끄.mp3"},
+                {"category": "ㄸ", "audio": "/page/hangul/audio/level01/chapter02/뜨.mp3"},
+                {"category": "ㅃ", "audio": "/page/hangul/audio/level01/chapter02/쁘.mp3"},
+                {"category": "ㅆ", "audio": "/page/hangul/audio/level01/chapter02/쓰.mp3"},
+                {"category": "ㅉ", "audio": "/page/hangul/audio/level01/chapter02/쯔.mp3"}  
+            ]
+        },
+        {
+            "chapterTitle" : "Chapter 3. ㅏ - ㅣ",
+            "itemsPerRow": 10,
+            "itemsPerRowMobile": 5,
+            "MobileEmpty": false,
+            "words": [
+                {"category": "ㅏ", "audio": "/page/hangul/audio/level01/chapter03/아.mp3"},
+                {"category": "ㅑ", "audio": "/page/hangul/audio/level01/chapter03/야.mp3"},
+                {"category": "ㅓ", "audio": "/page/hangul/audio/level01/chapter03/어.mp3"},
+                {"category": "ㅕ", "audio": "/page/hangul/audio/level01/chapter03/여.mp3"},
+                {"category": "ㅗ", "audio": "/page/hangul/audio/level01/chapter03/오.mp3"},
+                {"category": "ㅛ", "audio": "/page/hangul/audio/level01/chapter03/요.mp3"},
+                {"category": "ㅜ", "audio": "/page/hangul/audio/level01/chapter03/우.mp3"},
+                {"category": "ㅠ", "audio": "/page/hangul/audio/level01/chapter03/유.mp3"},
+                {"category": "ㅡ", "audio": "/page/hangul/audio/level01/chapter03/으.mp3"},
+                {"category": "ㅣ", "audio": "/page/hangul/audio/level01/chapter03/이.mp3"}
+            ]
+        },
+        {
+            "chapterTitle" : "Chapter 4. ㅐ - ㅢ",
+            "itemsPerRow": 10,
+            "itemsPerRowMobile": 5,
+            "MobileEmpty": false,
+            "words": [
+                {"category": "ㅐ", "audio": "/page/hangul/audio/level01/chapter04/애.mp3"},
+                {"category": "ㅒ", "audio": "/page/hangul/audio/level01/chapter04/얘.mp3"},
+                {"category": "ㅔ", "audio": "/page/hangul/audio/level01/chapter04/에.mp3"},
+                {"category": "ㅖ", "audio": "/page/hangul/audio/level01/chapter04/예.mp3"},
+                {"category": "ㅘ", "audio": "/page/hangul/audio/level01/chapter04/와.mp3"},
+                {"category": "ㅙ", "audio": "/page/hangul/audio/level01/chapter04/왜.mp3"},
+                {"category": "ㅚ", "audio": "/page/hangul/audio/level01/chapter04/외.mp3"},
+                {"category": "ㅝ", "audio": "/page/hangul/audio/level01/chapter04/워.mp3"},
+                {"category": "ㅞ", "audio": "/page/hangul/audio/level01/chapter04/웨.mp3"},
+                {"category": "ㅟ", "audio": "/page/hangul/audio/level01/chapter04/위.mp3"},
+                {"category": "ㅢ", "audio": "/page/hangul/audio/level01/chapter04/의.mp3"}
             ]
         }
     ]

@@ -1,68 +1,30 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/sidebar.css">
-    <link rel="stylesheet" href="/page/css/page.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/font.css">
-    <link rel="stylesheet" href="/css/mobile.css">
-    <link rel="stylesheet" href="/navigation/css/navigation.css">
-    
-    <link rel="icon" href="/img/logo/logo.png" type="image/png">
-    <title>알이랑 코리안 클래스</title>
-</head>
-<body ondragstart="return false;">
-
-    <header id="header-area"></header> <!-------------------- Header 불러오기 -------------------->
-
-    <div id="sidebar-area">
-        <!-------------------- Sidebar 불러오기 -------------------->
-    </div>
-    
-    <main class="wrapper"> <!-- 중단 영역 -->
-        <div class="page">
-            <div class="subtitle"> <!-- 콘텐츠 제목 영역 -->
-                <div class="contents-title">
-                    <div id="contents-level" class="contents-level"></div>
-                    <div class="contents-subtitle">
-                        <img class="desktop-only" src="/img/icon/icon01.png" draggable="false">
-                        <div class="contents-title-text">
-                            <h1 id="contents-title"></h1>
-                            <h2 id="contents-subtitle"></h2>
-                        </div>
-                        <img class="desktop-only" src="/img/icon/icon01.png" draggable="false">
-                    </div>  
+<div class="page">
+    <div class="subtitle"> <!-- 콘텐츠 제목 영역 -->
+        <div class="contents-title">
+            <div id="contents-level" class="contents-level"></div>
+            <div class="contents-subtitle">
+                <img class="desktop-only" src="/img/icon/icon01.png" draggable="false">
+                <div class="contents-title-text">
+                    <h1 id="contents-title"></h1>
+                    <h2 id="contents-subtitle"></h2>
                 </div>
-                
-                <div class="contents-menu-type">
-                    <span class="bar"></span>
-                    <h3 id="contents-menuType"></h3>
-                </div>
-            </div>
-
-            <div id="page-contents-area" class="page-contents-01">
-                <!-------------------- Contents 불러오기 -------------------->
-            </div>
-
-            <div class="page-contents-02">
-                <div class="page-contents-img"></div>
-            </div>
-
-            <div class="page-contents-03">
-                
-            </div>
+                <img class="desktop-only" src="/img/icon/icon01.png" draggable="false">
+            </div>  
         </div>
-    </main>
+        
+        <div class="contents-menu-type">
+            <span class="bar"></span>
+            <h3 id="contents-menuType"></h3>
+        </div>
+    </div>
 
-    <footer id="footer-area"></footer> <!-------------------- Footer 불러오기 -------------------->
-
-    <!-- 자바스크립트 불러오기 -->
-    <script src="/js/layout.js"></script>
-    <script src="/page/js/page.js"></script>
-</body>
-</html>
+    <div id="page-contents-area" class="page-contents-01">
+        <!-------------------- Contents 불러오기 -------------------->
+    </div>
+    <div class="page-contents-02">
+        <div class="page-contents-img"></div>
+    </div>
+    <div class="page-contents-03">
+        
+    </div>
+</div>
