@@ -441,7 +441,7 @@ footer .contact ul li a, .sns-area span {
         padding: 10px 0;
     }
 
-        footer .copyright .copyright-text, footer .copyright .version{
+    footer .copyright .copyright-text, footer .copyright .version, footer .copyright .count{
         border: none;
     }
 }

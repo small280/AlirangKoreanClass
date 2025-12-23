@@ -75,7 +75,7 @@ function initHitCounter() {
         <a href="https://myhits.vercel.app" target="_blank">
           <img src="https://myhits.vercel.app/api/hit/https%3A%2F%2Falirangkoreanclass?color=gray&label=count&size=small" alt="count" />
         </a>`;
-    }   
+    }
 }
 
 
