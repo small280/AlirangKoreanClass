@@ -834,7 +834,7 @@
             "words": [
                 {"category": "끡", "audio": "/page/hangul/audio/level01/가.mp3"},
                 {"category": "끤", "audio": "/page/hangul/audio/level01/나.mp3"},
-                {"category": "끧", "audio": "/page/hangul/audio/level01/다.mp3"},
+                {"category": "끧", "audio": "/page/hangul/audio/level01/다.mp3", "useAudio": false},
                 {"category": "끨", "audio": "/page/hangul/audio/level01/나.mp3"},
                 {"category": "끰", "audio": "/page/hangul/audio/level01/나.mp3"},
                 {"category": "끱", "audio": "/page/hangul/audio/level01/나.mp3"},
