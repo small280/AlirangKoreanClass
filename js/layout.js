@@ -75,12 +75,7 @@ function initHitCounter() {
         <a href="https://myhits.vercel.app" target="_blank">
           <img src="https://myhits.vercel.app/api/hit/https%3A%2F%2Falirangkoreanclass?color=gray&label=count&size=small" alt="count" />
         </a>`;
-        console.log("배포 환경: 히트 카운터를 로드합니다.");
-    } else {
-        // 로컬 환경일 때는 아무것도 하지 않거나 안내 메시지만 남깁니다.
-        hitItem.innerHTML = `<small style="color:gray;">(로컬: 카운트 제외됨)</small>`;
-        console.log("로컬 환경: 히트 카운터 로드를 건너뜁니다.");
-    }
+    }   
 }
 
 
