@@ -51,38 +51,52 @@ async function updateFooterVersion() {
 async function loadComponent(targetId, url, callback) {
     try {
         const res = await fetch(url);
+        if (!res.ok) throw new Error(`${url} 로드 실패`);
         const html = await res.text();
         const target = document.getElementById(targetId);
         if (target) {
-            target.innerHTML = html; // 1. HTML을 먼저 넣고
-            if (callback) callback(); // 2. 그 다음 콜백(카운터 실행) 호출
+            target.innerHTML = html; // 1. HTML 주입
+            if (callback) callback(); // 2. 로드 완료 후 콜백 실행
         }
     } catch (e) {
-        console.error(e);
+        console.error("컴포넌트 로드 에러:", e);
     }
 }
 
 function initHitCounter() {
+    const hostname = window.location.hostname;
     const hitItem = document.getElementById('hit-counter-item');
-    if (!hitItem) {
-        console.warn("히트 카운터 아이템을 찾을 수 없습니다.");
-        return;
+    
+    if (!hitItem) return;
+
+    // [핵심] 로컬 주소(localhost, 127.0.0.1)가 아닐 때만 이미지를 삽입합니다.
+    if (hostname !== "localhost" && hostname !== "127.0.0.1") {
+        hitItem.innerHTML = `
+        <a href="https://myhits.vercel.app" target="_blank">
+          <img src="https://myhits.vercel.app/api/hit/https%3A%2F%2Falirangkoreanclass?color=gray&label=count&size=small" alt="count" />
+        </a>`;
+        console.log("배포 환경: 히트 카운터를 로드합니다.");
+    } else {
+        // 로컬 환경일 때는 아무것도 하지 않거나 안내 메시지만 남깁니다.
+        hitItem.innerHTML = `<small style="color:gray;">(로컬: 카운트 제외됨)</small>`;
+        console.log("로컬 환경: 히트 카운터 로드를 건너뜁니다.");
     }
-    
-    // 1. 도메인 주소 설정
-    const siteUrl = encodeURIComponent("https://alirangkoreanclass.com"); 
-    
-    // 2. [수정] src 주소에 https:// 추가 및 ${siteUrl} 템플릿 리터럴 문법 확인
-    hitItem.innerHTML = `
-    <a href="https://myhits.vercel.app" target="_blank">
-      <img src="myhits.vercel.app{siteUrl}?color=gray&label=counts&size=small" alt="counts" />
-    </a>`;
 }
 
-// 초기화 순서
+
+
+// 초기화 순서 제어
 document.addEventListener("DOMContentLoaded", () => {
+    // 푸터 로드 콜백 안에서 버전 정보와 카운터를 실행합니다.
     loadComponent('footer-area', '/footer.html', () => {
-        if (typeof updateFooterVersion === 'function') updateFooterVersion();
-        initHitCounter(); // 반드시 콜백 안에서 실행
+        // updateFooterVersion 함수가 정의되어 있는지 확인 후 실행
+        if (typeof updateFooterVersion === 'function') {
+            updateFooterVersion();
+        }
+        initHitCounter(); 
     });
+
+    // 헤더와 사이드바도 로드 (필요시)
+    loadComponent('header-area', '/header.html');
+    loadComponent('sidebar-area', '/sidebar.html');
 });
